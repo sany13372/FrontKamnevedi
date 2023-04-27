@@ -12,7 +12,27 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        'blue-bg':'#184bc8',
+        'birus-bg':'#e8edf9',
+        'header-bg':'#184bc8',
+        'primary': '#194BC8',
+        'arrow-pg': '#1d4dc9',
+        'header-ta': '#1d4dc9',
+        'header-text':'#194BC8',
+        'table-item':'#d1dbf4',
+        'status-color':'#e5e5e5',
+        'videoplayer-bg':'#f3f6fc',
+        'modal-remind':'#ddecd9',
+        'medium-green':'#32AF00'
+      },
+      fontFamily: {
+        'main': ['Source Sans Pro']
+      }
     },
+  },
+  variants: {
+    fill: ['hover', 'focus'], // this line does the trick
   },
   plugins: [],
 }
