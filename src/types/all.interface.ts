@@ -3,6 +3,7 @@ export interface IUser {
     firstName:string
     lastName:string
     status:string
+    comments:string[]
     score:number | null
     rank:number | null
 }

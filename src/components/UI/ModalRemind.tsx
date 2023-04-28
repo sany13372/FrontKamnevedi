@@ -1,4 +1,4 @@
-import {Dispatch, FC, SetStateAction} from 'react';
+import {FC} from 'react';
 import Image from "next/image";
 import CrossImg from '../../../public/Cross.svg'
 import {useUsers} from "@/providers/UsersProvider";

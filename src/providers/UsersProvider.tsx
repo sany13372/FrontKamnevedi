@@ -1,4 +1,4 @@
-import {createContext, FC, PropsWithChildren, useContext, useEffect, useMemo, useState} from 'react'
+import {createContext, FC, PropsWithChildren, useContext, useMemo, useState} from 'react'
 import {IUser} from "@/types/all.interface";
 
 
@@ -21,7 +21,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Paulson',
         status: 'Shortlisted',
         score: 231,
-        rank: 1
+        rank: 1,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '2',
@@ -29,7 +30,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Miller',
         status: 'New',
         score: 224,
-        rank: 2
+        rank: 2,
+        comments:['hi','what?']
     },
     {
         id: '3',
@@ -37,7 +39,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Blumenthal',
         status: 'Completed',
         score: 199,
-        rank: 6
+        rank: 6,
+        comments:['gg','NO']
     },
     {
         id: '4',
@@ -45,7 +48,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Blanc',
         status: 'Completed',
         score: 147,
-        rank: 7
+        rank: 7,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '5',
@@ -53,7 +57,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Kailing',
         status: 'On hold',
         score: 126,
-        rank: 8
+        rank: 8,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '6',
@@ -61,7 +66,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Asher',
         status: 'Invited',
         score: null,
-        rank: null
+        rank: null,
+        comments:['Do']
     },
     {
         id: '7',
@@ -69,7 +75,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Seymour',
         status: 'Invited',
         score: null,
-        rank: null
+        rank: null,
+        comments:['Some']
     },
     {
         id: '8',
@@ -77,7 +84,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Johnson',
         status: 'Invited',
         score: null,
-        rank: null
+        rank: null,
+        comments:['Good']
     },
     {
         id: '9',
@@ -85,7 +93,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Halliday',
         status: 'Invited',
         score: null,
-        rank: null
+        rank: null,
+        comments:['More']
     },
     {
         id: '10',
@@ -93,7 +102,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Miller',
         status: 'Invited',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '11',
@@ -101,7 +111,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Cooper',
         status: 'Pending',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '12',
@@ -109,7 +120,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Beykpour',
         status: 'Abandoned',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '13',
@@ -117,7 +129,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Hart',
         status: 'Abandoned',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '14',
@@ -125,7 +138,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Tolstoy',
         status: 'Rejected',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '15',
@@ -133,7 +147,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Osborne',
         status: 'Refused',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '16',
@@ -141,7 +156,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Bentham',
         status: 'Refused',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '17',
@@ -149,7 +165,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Higgins',
         status: 'Refused',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '18',
@@ -157,7 +174,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Paulson',
         status: 'Shortlisted',
         score: 231,
-        rank: 1
+        rank: 1,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '19',
@@ -165,7 +183,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Miller',
         status: 'New',
         score: 224,
-        rank: 2
+        rank: 2,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '20',
@@ -173,7 +192,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Blumenthal',
         status: 'Completed',
         score: 199,
-        rank: 6
+        rank: 6,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '21',
@@ -181,7 +201,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Blanc',
         status: 'Completed',
         score: 147,
-        rank: 7
+        rank: 7,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '22',
@@ -189,7 +210,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Kailing',
         status: 'On hold',
         score: 126,
-        rank: 8
+        rank: 8,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '23',
@@ -197,7 +219,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Asher',
         status: 'Invited',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '24',
@@ -205,7 +228,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Seymour',
         status: 'Invited',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '25',
@@ -213,7 +237,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Johnson',
         status: 'Invited',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '26',
@@ -221,7 +246,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Halliday',
         status: 'Invited',
         score: null,
-        rank: null
+        rank: null,
+        comments:['What you do ?']
     },
     {
         id: '27',
@@ -229,7 +255,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Miller',
         status: 'Invited',
         score: null,
-        rank: null
+        rank: null,
+        comments:['gOOD']
     },
     {
         id: '28',
@@ -237,7 +264,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Cooper',
         status: 'Pending',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '29',
@@ -245,7 +273,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Beykpour',
         status: 'Abandoned',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '30',
@@ -253,7 +282,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Hart',
         status: 'Abandoned',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '31',
@@ -261,7 +291,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Tolstoy',
         status: 'Rejected',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '32',
@@ -269,7 +300,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Osborne',
         status: 'Refused',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '33',
@@ -277,7 +309,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Bentham',
         status: 'Refused',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
     {
         id: '34',
@@ -285,7 +318,8 @@ export const usersDefault: IUser[] = [
         lastName: 'Higgins',
         status: 'Refused',
         score: null,
-        rank: null
+        rank: null,
+        comments:['hi','HowAreYou?']
     },
 ]
 export const UsersContext = createContext<IUsersContext>({} as IUsersContext)

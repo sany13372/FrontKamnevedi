@@ -7,6 +7,7 @@ import {IUser} from "@/types/all.interface";
 import cn from 'clsx'
 import PauseImg from '../../../../../../../../../public/Pause.svg'
 import MessageWhiteImg from '../../../../../../../../../public/MessageWhite.svg'
+import PlayerWhiteImg from '../../../../../../../../../public/PlayerWhite.svg'
 
 interface IActions {
     user: IUser,
@@ -15,24 +16,23 @@ interface IActions {
 }
 
 const Actions: FC<IActions> = ({user, setIsPlay, isPlay}) => {
-    const {setSelectUser} = useUsers()
-    const handlePlayVideo = () => {
-        setSelectUser(user)
-        //setIsPlay(!isPlay)
-    }
-
-    const stopVideo = () => {
-        setIsPlay(false)
-        //@ts-ignore
-        setSelectUser({})
-    }
+    const {selectUser} = useUsers()
 
     return (
         <div className={'flex items-center gap-5'}>
-            {isPlay ? <Image src={PauseImg} alt={'Картинка'} onClick={() => stopVideo()}/> :
-                <Image src={PlayerImg} onClick={() => handlePlayVideo()} className={cn('cursor-pointer white')}
+            {selectUser.id !== user.id &&
+                <Image src={PlayerImg} onClick={() => setIsPlay(true)} className={cn('cursor-pointer white')}
                        alt={'Картинка'}/>}
-            {isPlay ? <Image src={MessageWhiteImg} className={'cursor-pointer'} alt={'Картинка'}/> :
+            {selectUser.id === user.id &&
+                <>
+                    {isPlay ? <Image src={PlayerWhiteImg} onClick={() => setIsPlay(!isPlay)}
+                                     className={cn('cursor-pointer white')}
+                                     alt={'Картинка'}/> :
+                        <Image src={PauseImg} alt={'Картинка'} onClick={() => setIsPlay(!isPlay)}/>
+                    }
+                </>
+            }
+            {selectUser.id === user.id ? <Image src={MessageWhiteImg} className={'cursor-pointer'} alt={'Картинка'}/> :
                 <Image src={MessageImg} className={'cursor-pointer'} alt={'Картинка'}/>}
         </div>
     );
