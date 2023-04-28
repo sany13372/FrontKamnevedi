@@ -7,9 +7,11 @@ import {useUsers} from "@/providers/UsersProvider";
 interface IBodyItem {
     user: IUser
     setSelectedUsers: Dispatch<SetStateAction<IUser[]>>
+    setAllCheked: Dispatch<SetStateAction<boolean>>
+    allCheked: boolean
 }
 
-const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers}) => {
+const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers, allCheked,setAllCheked}) => {
 
     const [isCheck, setIsCheck] = useState<boolean>(false)
     const [isPlay, setIsPlay] = useState<boolean>(false)
@@ -19,7 +21,6 @@ const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers}) => {
     useEffect(() => {
         if (selectUser.firstName === user.firstName) {
             setIsPlay(true)
-
         } else {
             setIsPlay(false)
         }
@@ -27,25 +28,34 @@ const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers}) => {
     }, [selectUser])
 
     useEffect(() => {
+        if (allCheked) {
+            setIsCheck(true)
+        } else {
+            setIsCheck(false)
+        }
+    }, [allCheked])
+
+    useEffect(() => {
         if (isCheck) {
             setSelectedUsers((prev) => [...prev, user])
         } else {
-            setSelectedUsers((prev) => prev.filter((usere: IUser) => usere.firstName !== user.firstName))
+            setSelectedUsers((prev) => prev.filter((prevUser: IUser) => prevUser.firstName !== user.firstName))
         }
     }, [isCheck])
 
     useEffect(() => {
         if (isReminds) {
             setIsCheck(false)
+            setAllCheked(false)
         }
     }, [isReminds])
 
     return (
         <div
-            className={cn('group py-2 pl-3 border-b border-solid border-table-item grid grid-cols-[50px_140px_140px_140px_200px_80px] pr-3  cursor-pointer', {
-                'hover:bg-table-item': (!isCheck && !isPlay && user.firstName !== selectUser.firstName),
-                'bg-primary hover:bg-primary text-white': user.firstName === selectUser.firstName && isPlay,
-                'bg-videoplayer-bg hover:bg-videoplayer-bg text-black': isCheck,
+            className={cn('group text-black py-2 pl-3 border-b border-solid border-table-item grid grid-cols-[50px_140px_140px_140px_200px_80px] pr-3  cursor-pointer', {
+                'hover:bg-table-item': (!isCheck && !isPlay && user.id !== selectUser.id),
+                'bg-primary hover:bg-primary text-white': user.id === selectUser.id && isPlay,
+                'bg-videoplayer-bg hover:bg-videoplayer-bg ': isCheck,
             })}>
             <div className="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
                 <input
@@ -54,7 +64,9 @@ const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers}) => {
                         'checked:after:absolute checked:after:-mt-px checked:after:ml-[0.25rem] checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:border-primary checked:bg-primary checked:before:opacity-[0.16] checked:focus:after:border-l-0 checked:focus:after:border-t-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent dark:border-table-item dark:checked:border-primary dark:checked:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:-mt-px checked:focus:after:ml-[0.25rem] checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem]': isCheck,
                         'group-hover:dark:border-primary': !isCheck && !isPlay,
                     })}
-                    checked={isCheck}
+                    onChange={(e) => {
+                    }}
+                    checked={isCheck || false}
                     type="checkbox"
                     value=""
                     id="checkboxDefault"/>
@@ -69,7 +81,7 @@ const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers}) => {
                 <h5 className={'flex-[50%]'}>{user.rank}</h5>
             </div>
             {showConsist &&
-                <Actions user={user} isPlay={user.firstName === selectUser.firstName && isPlay} setIsPlay={setIsPlay}/>}
+                <Actions user={user} isPlay={user.id === selectUser.id && isPlay} setIsPlay={setIsPlay}/>}
         </div>
     );
 }

@@ -4,7 +4,7 @@ import BlockActions from "./BlockActions/BlockActions";
 
 const TopBar: FC = () => {
     return (
-        <div className={'flex items-center justify-center bg-birus-bg px-2 flex-wrap min-[957px]:pr-7 min-[957px]:pl-10 py-2  min-[957px]:justify-between'}>
+        <div className={'flex items-center justify-center bg-birus-bg px-2 flex-wrap min-[957px]:pr-12 min-[957px]:pl-10 py-2  min-[957px]:justify-between'}>
             <Blocks/>
             <BlockActions/>
         </div>

@@ -4,8 +4,8 @@ import VideoImg from '../../../../../../../public/Player.png'
 
 const BlockVideo: FC = () => {
     return (
-        <div className={'mb-4'}>
-            <Image src={VideoImg} alt={'Картинка'}/>
+        <div className={'mb-4 flex w-[100%]'}>
+            <Image src={VideoImg} className={'w-[100%]'} alt={'Картинка'}/>
         </div>
     );
 }

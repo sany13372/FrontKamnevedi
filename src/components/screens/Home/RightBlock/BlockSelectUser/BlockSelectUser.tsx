@@ -6,14 +6,14 @@ import CommentInput from './CommentInput/CommentInput'
 import CommentItem from './CommentItem/CommentItem'
 
 const BlockSelectUser: FC = () => {
-    const [comments,setComments] = useState<string[]>(['Hi bro','PP'])
+    const [comments,setComments] = useState<string[]>(['Hi bro','Hello'])
     return (
         <div>
             <Header/>
             <BlockVideo/>
             <LineActionsVideo/>
             <CommentInput setComments={setComments}/>
-            {comments.map((comment) => <CommentItem item={comment}/>)}
+            {comments.map((comment) => <CommentItem key={comment} item={comment}/>)}
         </div>
     );
 }

@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -27,7 +29,9 @@ module.exports = {
         'medium-green':'#32AF00'
       },
       fontFamily: {
-        'main': ['Source Sans Pro']
+        'main': ['Source Sans Pro'],
+        'inter': ['Inter'],
+        'sans': ['Inter var']
       }
     },
   },

@@ -1,21 +1,27 @@
 import {FC, useEffect, useState} from 'react';
 import SearchImg from '../../../../../../../public/Search.svg'
 import Image from "next/image";
-import {usersDefault, useUsers} from "@/providers/UsersProvider";
+import {useUsers} from "@/providers/UsersProvider";
 import Field from "@/components/UI/Field";
+import {IUser} from "@/types/all.interface";
 
 const SearchLine: FC = () => {
     const [searchQuery, setSearchQuery] = useState<string>('')
-    const {users, setUsers} = useUsers()
+    const {users, setUsers,usersPaginate} = useUsers()
+
+    const filterSearchName = (array:any) => {
+        return array.filter((item:IUser) => item.firstName.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
+    };
+
     const searchHandle = () => {
         if (searchQuery !== '') {
-            setUsers(users.filter((user) => user.firstName === searchQuery))
+            setUsers(filterSearchName(users))
         }
     }
 
     useEffect(() => {
         if (searchQuery === '') {
-            setUsers(usersDefault)
+            setUsers(usersPaginate)
         }
     }, [searchQuery])
 

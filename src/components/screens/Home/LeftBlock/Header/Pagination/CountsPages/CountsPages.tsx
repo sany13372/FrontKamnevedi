@@ -1,10 +1,24 @@
 import {FC} from 'react';
+import cn from 'clsx'
 
-const CountsPages: FC = () => {
-    const countsPages = [1, 2, 3, 4]
+interface ICountsPages {
+    currentPage: number
+    paginationGroup: any
+    changePage: (item: number) => void
+}
+
+const CountsPages: FC<ICountsPages> = ({currentPage, changePage, paginationGroup}) => {
     return (
-        <div className={'flex gap-2'}>
-            {countsPages.map((item) => <div key={item} className={'hover:text-arrow-pg cursor-pointer'}>{item}</div>)}
+        <div className={'flex gap-2 '}>
+            {paginationGroup().map((item: number) =>
+                <div key={item}
+                     onClick={() => changePage(item)}
+                     className={cn('hover:text-arrow-pg cursor-pointer', {
+                         'text-arrow-pg':currentPage === item
+                     })}>
+                    {item}
+                </div>
+            )}
         </div>
     );
 }

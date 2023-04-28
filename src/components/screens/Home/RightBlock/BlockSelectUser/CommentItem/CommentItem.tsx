@@ -8,7 +8,7 @@ const CommentItem: FC<{ item: string }> = ({item}) => {
             <div className={'flex items-center justify-between'}>
                 <div className={'flex items-center gap-2'}>
                     <Image src={AvatarImg} alt={'Картинка'}/>
-                    <h4 className={'font-weight-600'}>Alexandar</h4>
+                    <h4 className={'font-semibold'}>Alexandar</h4>
                     <span className={'bg-status-color px-1 py-1 rounded'}>Invited</span>
                 </div>
                 <div className={'flex items-center'}>

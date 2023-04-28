@@ -15,6 +15,9 @@ const RemindButton: FC<IRemindButton> = ({selectedUsers,setSelectedUsers,setCoun
         setIsReminds(true)
         setCounts(selectedUsers)
         setSelectedUsers([])
+        setTimeout(() => {
+            setIsReminds(false)
+        },3000)
     }
 
     return (
