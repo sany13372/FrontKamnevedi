@@ -19,9 +19,6 @@ const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers, allCheked,setAllCheked
     const showConsist = (user.status == 'Shortlisted' || user.status == 'Completed' || user.status == 'On hold')
 
     useEffect(() => {
-    }, [selectUser])
-
-    useEffect(() => {
         if (allCheked) {
             setIsCheck(true)
         } else {
@@ -50,7 +47,7 @@ const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers, allCheked,setAllCheked
             className={cn('group text-black py-2 pl-3 border-b border-solid border-table-item grid grid-cols-[50px_140px_140px_140px_200px_80px] pr-3  cursor-pointer', {
                 'hover:bg-table-item': (!isCheck && !isPlay && user.id !== selectUser.id),
                 'bg-primary hover:bg-primary text-white': user.id === selectUser.id,
-                'bg-videoplayer-bg hover:bg-videoplayer-bg ': isCheck,
+                'bg-videoplayer-bg hover:bg-videoplayer-bg ': isCheck && user.id !== selectUser.id,
             })}>
             <div className="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
                 <input

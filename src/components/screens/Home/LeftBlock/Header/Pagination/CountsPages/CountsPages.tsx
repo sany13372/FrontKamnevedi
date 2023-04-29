@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import cn from 'clsx'
+import CountItem from './CountItem/CountItem'
 
 interface ICountsPages {
     currentPage: number
@@ -10,15 +10,8 @@ interface ICountsPages {
 const CountsPages: FC<ICountsPages> = ({currentPage, changePage, paginationGroup}) => {
     return (
         <div className={'flex gap-2 '}>
-            {paginationGroup().map((item: number) =>
-                <div key={item}
-                     onClick={() => changePage(item)}
-                     className={cn('hover:text-arrow-pg cursor-pointer', {
-                         'text-arrow-pg':currentPage === item
-                     })}>
-                    {item}
-                </div>
-            )}
+            {paginationGroup().map((item: number) => <CountItem key={item} currentPage={currentPage} item={item}
+                                                                changePage={changePage}/>)}
         </div>
     );
 }

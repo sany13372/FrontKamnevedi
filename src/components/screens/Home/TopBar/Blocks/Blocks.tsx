@@ -21,10 +21,6 @@ const Blocks: FC = () => {
         ]
     ),[])
 
-    const filterSelectedCategoryOptions = (array:any) => {
-        //return array.filter((item:IUser) => item.status.includes(filters));
-    };
-
     return (
         <div className={'flex gap-2 flex-wrap  max-[950px]:order-2'}>
             {blocks.map((item: IBlocks) => <BlocksItem key={item.type} item={item}/>)}

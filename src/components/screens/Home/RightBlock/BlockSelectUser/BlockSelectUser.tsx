@@ -11,7 +11,7 @@ const BlockSelectUser: FC = () => {
     const [comments, setComments] = useState<string[]>([])
     useEffect(() => {
         setComments(selectUser.comments)
-    }, [])
+    }, [selectUser])
     return (
         <div>
             <Header/>
