@@ -4,20 +4,23 @@ import Image from "next/image";
 import {useUsers} from "@/providers/UsersProvider";
 import Field from "@/components/UI/Field";
 import {IUser} from "@/types/all.interface";
+import {useDebounce} from "@/hooks/useDebounce";
 
 const SearchLine: FC = () => {
     const [searchQuery, setSearchQuery] = useState<string>('')
-    const {users, setUsers,usersPaginate} = useUsers()
-
-    const filterSearchName = (array:any) => {
-        return array.filter((item:IUser) => item.firstName.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
-    };
+    const {users, setUsers, usersPaginate} = useUsers()
+    const debounceSearch = useDebounce(searchQuery, 500)
 
     const searchHandle = () => {
         if (searchQuery !== '') {
-            setUsers(filterSearchName(users))
+            const filterUsers = users.filter((item: IUser) => item.firstName.toLowerCase().indexOf(debounceSearch.toLowerCase()) != -1);
+            setUsers(filterUsers)
         }
     }
+
+    useEffect(() => {
+        searchHandle()
+    }, [debounceSearch])
 
     useEffect(() => {
         if (searchQuery === '') {

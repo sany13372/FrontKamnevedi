@@ -3,13 +3,16 @@ import Logo from "@/components/Header/Left/Logo/Logo";
 import Image from "next/image";
 import ArrowDown from "../../../../public/ArrowDown.svg";
 import ArrowLeft from "../../../../public/ArrowLeft.svg";
+import {Inter} from "next/font/google";
+
+const inter = Inter({subsets: ['latin'], weight: ['400', '700']})
 
 const Left: FC = () => {
     return (
-        <div className={'flex max-[650px]:hidden items-center font-main'}>
+        <div className={`flex max-[650px]:hidden items-center ${inter.className}`}>
             <Logo/>
             <div className={'flex ml-2 min-[680px]:ml-10 gap-2 items-center'}>
-                <h4 className={'text-white text-base text-center font-sans'}>Quick links</h4>
+                <h4 className={'text-white text-base text-center'}>Quick links</h4>
                 <Image src={ArrowDown} className={'cursor-pointer'} alt={'Картинка'}/>
             </div>
             <div className={'flex gap-2 items-center min-[600px]:ml-2 min-[840px]:ml-20'}>

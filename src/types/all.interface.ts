@@ -6,4 +6,6 @@ export interface IUser {
     comments:string[]
     score:number | null
     rank:number | null
+    videoUrl?:string
+    poster?:string
 }

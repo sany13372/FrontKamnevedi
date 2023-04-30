@@ -1,6 +1,6 @@
 import {createContext, FC, PropsWithChildren, useContext, useMemo, useState} from 'react'
 import {IUser} from "@/types/all.interface";
-
+import Img from '../../public/Player.png'
 
 export interface IUsersContext {
     users: IUser[];
@@ -22,7 +22,9 @@ export const usersDefault: IUser[] = [
         status: 'Shortlisted',
         score: 231,
         rank: 1,
-        comments:['hi','HowAreYou?']
+        comments:['hi','HowAreYou?'],
+        videoUrl:'Video.mp4',
+        poster:`Player.png`
     },
     {
         id: '2',
@@ -31,7 +33,9 @@ export const usersDefault: IUser[] = [
         status: 'New',
         score: 224,
         rank: 2,
-        comments:['hi','what?']
+        comments:['hi','what?'],
+        videoUrl:'Video.mp4',
+        poster:`Player.png`
     },
     {
         id: '3',
@@ -40,7 +44,9 @@ export const usersDefault: IUser[] = [
         status: 'Completed',
         score: 199,
         rank: 6,
-        comments:['gg','NO']
+        comments:['gg','NO'],
+        videoUrl:'Video.mp4',
+        poster:`Player.png`
     },
     {
         id: '4',

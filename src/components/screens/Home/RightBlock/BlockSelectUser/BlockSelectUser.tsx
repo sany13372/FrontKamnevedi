@@ -6,6 +6,7 @@ import CommentInput from './CommentInput/CommentInput'
 import CommentItem from './CommentItem/CommentItem'
 import {useUsers} from "@/providers/UsersProvider";
 
+
 const BlockSelectUser: FC = () => {
     const {selectUser} = useUsers()
     const [comments, setComments] = useState<string[]>([])
