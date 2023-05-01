@@ -6,10 +6,12 @@ import RemindButton from './RemindButton/RemindButton'
 import ModalRemind from "@/components/UI/ModalRemind";
 import {useUsers} from "@/providers/UsersProvider";
 
-const Header: FC<{ selectedUsers: IUser[], setSelectedUsers: Dispatch<SetStateAction<IUser[]>> }> = ({
-                                                                                                         selectedUsers,
-                                                                                                         setSelectedUsers
-                                                                                                     }) => {
+interface IHeader {
+    selectedUsers: IUser[],
+    setSelectedUsers: Dispatch<SetStateAction<IUser[]>>
+}
+
+const Header: FC<IHeader> = ({selectedUsers, setSelectedUsers}) => {
     const [counts, setCounts] = useState<number>(0)
     const {isReminds} = useUsers()
     return (
@@ -21,7 +23,7 @@ const Header: FC<{ selectedUsers: IUser[], setSelectedUsers: Dispatch<SetStateAc
                 <SearchLine/>
                 <Pagination/>
             </div>
-            {isReminds && <ModalRemind counts={counts} />}
+            {isReminds && <ModalRemind counts={counts}/>}
         </div>
     );
 }

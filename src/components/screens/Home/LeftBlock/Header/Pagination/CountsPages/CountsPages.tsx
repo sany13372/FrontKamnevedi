@@ -3,7 +3,7 @@ import CountItem from './CountItem/CountItem'
 
 interface ICountsPages {
     currentPage: number
-    paginationGroup: any
+    paginationGroup: () => number[]
     changePage: (item: number) => void
 }
 

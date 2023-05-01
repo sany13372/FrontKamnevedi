@@ -8,6 +8,7 @@ import cn from 'clsx'
 import PauseImg from '../../../../../../../../../public/Pause.svg'
 import MessageWhiteImg from '../../../../../../../../../public/MessageWhite.svg'
 import PlayerWhiteImg from '../../../../../../../../../public/PlayerWhite.svg'
+import {useVideo} from "@/hooks/useVideo";
 
 interface IActions {
     user: IUser,
@@ -17,18 +18,19 @@ interface IActions {
 
 const Actions: FC<IActions> = ({user, setIsPlay, isPlay}) => {
     const {selectUser} = useUsers()
+    const {video,actions} = useVideo()
 
     return (
         <div className={'flex items-center gap-5'}>
             {selectUser.id !== user.id &&
-                <Image src={PlayerImg} onClick={() => setIsPlay(true)} className={cn('cursor-pointer white')}
+                <Image src={PlayerImg}  className={cn('cursor-pointer white')}
                        alt={'Картинка'}/>}
             {selectUser.id === user.id &&
                 <>
-                    {isPlay ? <Image src={PlayerWhiteImg} onClick={() => setIsPlay(!isPlay)}
+                    {video.isPlaying ? <Image src={PlayerWhiteImg} onClick={actions.toggleVideo}
                                      className={cn('cursor-pointer white')}
                                      alt={'Картинка'}/> :
-                        <Image src={PauseImg} alt={'Картинка'} onClick={() => setIsPlay(!isPlay)}/>
+                        <Image src={PauseImg} alt={'Картинка'} onClick={actions.toggleVideo}/>
                     }
                 </>
             }

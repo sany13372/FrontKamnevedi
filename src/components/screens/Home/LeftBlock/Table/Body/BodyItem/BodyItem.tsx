@@ -7,11 +7,11 @@ import {useUsers} from "@/providers/UsersProvider";
 interface IBodyItem {
     user: IUser
     setSelectedUsers: Dispatch<SetStateAction<IUser[]>>
-    setAllCheked: Dispatch<SetStateAction<boolean>>
-    allCheked: boolean
+    setAllChecked: Dispatch<SetStateAction<boolean>>
+    allChecked: boolean
 }
 
-const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers, allCheked,setAllCheked}) => {
+const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers, allChecked,setAllChecked}) => {
 
     const [isCheck, setIsCheck] = useState<boolean>(false)
     const [isPlay, setIsPlay] = useState<boolean>(false)
@@ -19,12 +19,12 @@ const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers, allCheked,setAllCheked
     const showConsist = (user.status == 'Shortlisted' || user.status == 'Completed' || user.status == 'On hold')
 
     useEffect(() => {
-        if (allCheked) {
+        if (allChecked) {
             setIsCheck(true)
         } else {
             setIsCheck(false)
         }
-    }, [allCheked])
+    }, [allChecked])
 
     useEffect(() => {
         if (isCheck) {
@@ -37,7 +37,7 @@ const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers, allCheked,setAllCheked
     useEffect(() => {
         if (isReminds) {
             setIsCheck(false)
-            setAllCheked(false)
+            setAllChecked(false)
         }
     }, [isReminds])
 
@@ -69,7 +69,7 @@ const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers, allCheked,setAllCheked
             <h4>{user.firstName}</h4>
             <h4>{user.lastName}</h4>
             <div>
-                <span className={'bg-status-color px-1 py-1 rounded'}>{user.status}</span>
+                <span className={'bg-status-color px-1 py-1 rounded text-black'}>{user.status}</span>
             </div>
             <div className={'flex items-center'}>
                 <h5 className={'flex-[50%] text-center'}>{user.score}</h5>
