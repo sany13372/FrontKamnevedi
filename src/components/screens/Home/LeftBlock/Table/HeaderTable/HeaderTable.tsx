@@ -24,7 +24,7 @@ const HeaderTable: FC<IHeaderTable> = ({setAllChecked,allChecked}) => {
             <BlockSort title={'Status'} type={EnumsType.status} sortType={typeSort} setTypeSort={setTypeSort}/>
             <div className={'flex  gap-4'}>
                 <h4 className={'text-header-text'}>Score / 250</h4>
-                <BlockSort type={EnumsType.firstName} title={'Rank'} sortType={typeSort} setTypeSort={setTypeSort}/>
+                <BlockSort type={EnumsType.firstName} title={'Rank'} sortType={null} setTypeSort={setTypeSort}/>
             </div>
             <div></div>
         </div>

@@ -14,7 +14,7 @@ export enum EnumsType {
 interface IBlockSort {
     title: string
     type: EnumsType
-    sortType: string
+    sortType: string | null
     setTypeSort: Dispatch<SetStateAction<string>>
 }
 
@@ -23,8 +23,10 @@ const BlockSort: FC<IBlockSort> = ({title, sortType, setTypeSort, type}) => {
     const [descending, setDescending] = useState<boolean>(true)
 
     const handleSort = () => {
-        setTypeSort(type)
-        setDescending(!descending)
+        if (sortType !== null) {
+            setTypeSort(type)
+            setDescending(!descending)
+        }
     }
 
     useEffect(() => {
@@ -37,7 +39,7 @@ const BlockSort: FC<IBlockSort> = ({title, sortType, setTypeSort, type}) => {
                 setUsers(sortedUsers)
             }
         }
-    }, [sortType,descending])
+    }, [sortType, descending])
 
     return (
         <div className={'flex gap-2 cursor-pointer items-center'}
