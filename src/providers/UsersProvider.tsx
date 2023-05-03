@@ -1,6 +1,20 @@
 import {createContext, FC, PropsWithChildren, useContext, useMemo, useState} from 'react'
 import {IUser} from "@/types/all.interface";
-import Img from '../../public/Player.png'
+import {useVideo} from "@/hooks/useVideo";
+
+interface IVideoActions {
+    fullScreen: () => void,
+    revert: () => void,
+    fastForward: () => void,
+    toggleVideo: () => void
+}
+
+interface IVideo {
+    isPlaying: boolean,
+    currentTime: number,
+    progress: number,
+    videoTime: number
+}
 
 export interface IUsersContext {
     users: IUser[];
@@ -11,7 +25,9 @@ export interface IUsersContext {
     setSelectUser: (selectUser: IUser) => void
     isReminds: boolean
     setIsReminds: (reminds: boolean) => void
-
+    video: IVideo
+    videoRef: any
+    actions: IVideoActions
 }
 
 export const usersDefault: IUser[] = [
@@ -22,9 +38,9 @@ export const usersDefault: IUser[] = [
         status: 'Shortlisted',
         score: 231,
         rank: 1,
-        comments:['hi','HowAreYou?'],
-        videoUrl:'Video.mp4',
-        poster:`Player.png`
+        comments: ['hi', 'HowAreYou?'],
+        videoUrl: 'Video.mp4',
+        poster: `Player.png`
     },
     {
         id: '2',
@@ -33,9 +49,9 @@ export const usersDefault: IUser[] = [
         status: 'New',
         score: 224,
         rank: 2,
-        comments:['hi','what?'],
-        videoUrl:'Video.mp4',
-        poster:`Player.png`
+        comments: ['hi', 'what?'],
+        videoUrl: 'Video.mp4',
+        poster: `Player.png`
     },
     {
         id: '3',
@@ -44,9 +60,9 @@ export const usersDefault: IUser[] = [
         status: 'Completed',
         score: 199,
         rank: 6,
-        comments:['gg','NO'],
-        videoUrl:'Video.mp4',
-        poster:`Player.png`
+        comments: ['gg', 'NO'],
+        videoUrl: 'Video.mp4',
+        poster: `Player.png`
     },
     {
         id: '4',
@@ -55,7 +71,7 @@ export const usersDefault: IUser[] = [
         status: 'Completed',
         score: 147,
         rank: 7,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '5',
@@ -64,7 +80,7 @@ export const usersDefault: IUser[] = [
         status: 'On hold',
         score: 126,
         rank: 8,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '6',
@@ -73,7 +89,7 @@ export const usersDefault: IUser[] = [
         status: 'Invited',
         score: null,
         rank: null,
-        comments:['Do']
+        comments: ['Do']
     },
     {
         id: '7',
@@ -82,7 +98,7 @@ export const usersDefault: IUser[] = [
         status: 'Invited',
         score: null,
         rank: null,
-        comments:['Some']
+        comments: ['Some']
     },
     {
         id: '8',
@@ -91,7 +107,7 @@ export const usersDefault: IUser[] = [
         status: 'Invited',
         score: null,
         rank: null,
-        comments:['Good']
+        comments: ['Good']
     },
     {
         id: '9',
@@ -100,7 +116,7 @@ export const usersDefault: IUser[] = [
         status: 'Invited',
         score: null,
         rank: null,
-        comments:['More']
+        comments: ['More']
     },
     {
         id: '10',
@@ -109,7 +125,7 @@ export const usersDefault: IUser[] = [
         status: 'Invited',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '11',
@@ -118,7 +134,7 @@ export const usersDefault: IUser[] = [
         status: 'Pending',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '12',
@@ -127,7 +143,7 @@ export const usersDefault: IUser[] = [
         status: 'Abandoned',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '13',
@@ -136,7 +152,7 @@ export const usersDefault: IUser[] = [
         status: 'Abandoned',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '14',
@@ -145,7 +161,7 @@ export const usersDefault: IUser[] = [
         status: 'Rejected',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '15',
@@ -154,7 +170,7 @@ export const usersDefault: IUser[] = [
         status: 'Refused',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '16',
@@ -163,7 +179,7 @@ export const usersDefault: IUser[] = [
         status: 'Refused',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '17',
@@ -172,7 +188,7 @@ export const usersDefault: IUser[] = [
         status: 'Refused',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '18',
@@ -181,7 +197,7 @@ export const usersDefault: IUser[] = [
         status: 'Shortlisted',
         score: 231,
         rank: 1,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '19',
@@ -190,7 +206,7 @@ export const usersDefault: IUser[] = [
         status: 'New',
         score: 224,
         rank: 2,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '20',
@@ -199,7 +215,7 @@ export const usersDefault: IUser[] = [
         status: 'Completed',
         score: 199,
         rank: 6,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '21',
@@ -208,7 +224,7 @@ export const usersDefault: IUser[] = [
         status: 'Completed',
         score: 147,
         rank: 7,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '22',
@@ -217,7 +233,7 @@ export const usersDefault: IUser[] = [
         status: 'On hold',
         score: 126,
         rank: 8,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '23',
@@ -226,7 +242,7 @@ export const usersDefault: IUser[] = [
         status: 'Invited',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '24',
@@ -235,7 +251,7 @@ export const usersDefault: IUser[] = [
         status: 'Invited',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '25',
@@ -244,7 +260,7 @@ export const usersDefault: IUser[] = [
         status: 'Invited',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '26',
@@ -253,7 +269,7 @@ export const usersDefault: IUser[] = [
         status: 'Invited',
         score: null,
         rank: null,
-        comments:['What you do ?']
+        comments: ['What you do ?']
     },
     {
         id: '27',
@@ -262,7 +278,7 @@ export const usersDefault: IUser[] = [
         status: 'Invited',
         score: null,
         rank: null,
-        comments:['gOOD']
+        comments: ['gOOD']
     },
     {
         id: '28',
@@ -271,7 +287,7 @@ export const usersDefault: IUser[] = [
         status: 'Pending',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '29',
@@ -280,7 +296,7 @@ export const usersDefault: IUser[] = [
         status: 'Abandoned',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '30',
@@ -289,7 +305,7 @@ export const usersDefault: IUser[] = [
         status: 'Abandoned',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '31',
@@ -298,7 +314,7 @@ export const usersDefault: IUser[] = [
         status: 'Rejected',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '32',
@@ -307,7 +323,7 @@ export const usersDefault: IUser[] = [
         status: 'Refused',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '33',
@@ -316,7 +332,7 @@ export const usersDefault: IUser[] = [
         status: 'Refused',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
     {
         id: '34',
@@ -325,19 +341,18 @@ export const usersDefault: IUser[] = [
         status: 'Refused',
         score: null,
         rank: null,
-        comments:['hi','HowAreYou?']
+        comments: ['hi', 'HowAreYou?']
     },
 ]
 export const UsersContext = createContext<IUsersContext>({} as IUsersContext)
 
 const UserProvider: FC<PropsWithChildren> = ({children}) => {
 
-
     const [users, setUsers] = useState<IUser[]>([])
     const [usersPaginate, setUsersPaginate] = useState<IUser[]>([])
     const [selectUser, setSelectUser] = useState<IUser>({} as IUser)
     const [isReminds, setIsReminds] = useState<boolean>(false)
-
+    const {video, videoRef, actions} = useVideo()
     const values = useMemo(() => ({
         users,
         setUsers,
@@ -346,8 +361,11 @@ const UserProvider: FC<PropsWithChildren> = ({children}) => {
         isReminds,
         setIsReminds,
         usersPaginate,
-        setUsersPaginate
-    }), [users, selectUser, isReminds, usersPaginate])
+        setUsersPaginate,
+        video,
+        videoRef,
+        actions
+    }), [users, selectUser, isReminds, usersPaginate, video, videoRef, actions])
 
     return <UsersContext.Provider value={values}>{children}</UsersContext.Provider>
 }

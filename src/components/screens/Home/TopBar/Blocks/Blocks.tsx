@@ -10,6 +10,7 @@ export interface IBlocks {
 const Blocks: FC = () => {
     const blocks: IBlocks[] = useMemo(() => (
         [
+            {type: 'New', counts: 2},
             {type: 'Shortlisted', counts: 2},
             {type: 'Completed', counts: 2},
             {type: 'On hold', counts: 5},

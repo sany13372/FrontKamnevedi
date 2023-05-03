@@ -3,8 +3,8 @@ import {useUsers} from "@/providers/UsersProvider";
 import {useVideo} from "@/hooks/useVideo";
 import ActionsVideo from './ActionsVideo'
 const BlockVideo: FC = () => {
-    const {selectUser} = useUsers()
-    const {video, videoRef, actions} = useVideo()
+    const {selectUser,video,videoRef,actions} = useUsers()
+   // const {video, videoRef, actions} = useVideo()
     return (
         <div className={'mb-4 flex w-[100%] relative mb-[55px]   justify-center'}>
             <div
@@ -21,9 +21,9 @@ const BlockVideo: FC = () => {
                     </h4>
                 </div>
             </div>
-            <div className={'h-[500px] overflow-hidden   flex flex-auto justify-center'}>
+            <div className={'h-[500px] overflow-hidden w-full  '}>
                 <video
-                    className={'object-cover'}
+                    className={'object-cover w-full h-full'}
                     controls={false}
                     preload="metadata"
                     poster={`${selectUser?.poster}`}
@@ -40,7 +40,7 @@ const BlockVideo: FC = () => {
                         style={{width: `${video.progress}%`}}
                     />
                 </div>
-                <ActionsVideo video={video} actions={actions}/>
+                <ActionsVideo />
             </div>
         </div>
     );

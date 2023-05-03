@@ -41,6 +41,8 @@ const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers, allChecked,setAllCheck
         }
     }, [isReminds])
 
+
+
     return (
         <div
             onClick={() => setSelectUser(user)}
@@ -73,7 +75,7 @@ const BodyItem: FC<IBodyItem> = ({user, setSelectedUsers, allChecked,setAllCheck
             </div>
             <div className={'flex items-center'}>
                 <h5 className={'flex-[50%] text-center'}>{user.score}</h5>
-                <h5 className={'flex-[50%]'}>{user.rank}</h5>
+                <h5 className={'flex-[50%] ml-[40px]'}>{user.rank}</h5>
             </div>
             {showConsist &&
                 <Actions user={user} isPlay={isPlay} setIsPlay={setIsPlay}/>}

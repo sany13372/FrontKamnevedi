@@ -25,10 +25,10 @@ const BlocksItem: FC<{ item: IBlocks }> = ({item}) => {
                 }
             )}>
             <div onClick={() => setIsFilter(true)} className={'flex items-center cursor-pointer gap-1'}>
-                <h4 className={'font-inter'}>
+                <h4>
                     {item.type}
                 </h4>
-                <h4 className={'font-main'}>
+                <h4>
                     {item.counts}
                 </h4>
             </div>
