@@ -1,12 +1,11 @@
 import {FC, useEffect, useState} from 'react';
 import {IBlocks} from "@/components/screens/Home/TopBar/Blocks/Blocks";
 import {useUsers} from "@/providers/UsersProvider";
-import RemoveImg from '../../../../../../../public/Remove.svg'
+import RemoveImg from '@/components/icons/Remove.svg'
 import cn from 'clsx'
-import Image from "next/image";
 
 const BlocksItem: FC<{ item: IBlocks }> = ({item}) => {
-    const {users, setUsers,usersPaginate} = useUsers()
+    const {users, setUsers, usersPaginate} = useUsers()
     const [isFilter, setIsFilter] = useState<boolean>(false)
 
     useEffect(() => {
@@ -19,7 +18,7 @@ const BlocksItem: FC<{ item: IBlocks }> = ({item}) => {
 
     return (
         <div
-            className={cn('border min-[1100px]:px-2 min-[1100px]:py-2  border-black flex gap-2 border-solid ',
+            className={cn('border min-[1100px]:px-2 min-[1100px]:py-2 items-center  border-black flex gap-2 border-solid ',
                 {
                     'bg-table-item text-primary border-primary': isFilter
                 }
@@ -32,8 +31,8 @@ const BlocksItem: FC<{ item: IBlocks }> = ({item}) => {
                     {item.counts}
                 </h4>
             </div>
-            {isFilter && <Image className={'cursor-pointer'} onClick={() => setIsFilter(false)} src={RemoveImg}
-                                alt={'Картинка'}/>}
+            {isFilter && <RemoveImg className={'cursor-pointer'} onClick={() => setIsFilter(false)}
+                                    alt={'Картинка'}/>}
         </div>
     );
 }

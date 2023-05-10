@@ -23,10 +23,14 @@ module.exports = {
         'header-ta': '#1d4dc9',
         'header-text':'#194BC8',
         'table-item':'#d1dbf4',
+        'before-template':'#a3b7e9',
         'status-color':'#e5e5e5',
         'videoplayer-bg':'#f3f6fc',
         'modal-remind':'#ddecd9',
-        'medium-green':'#32AF00'
+        'medium-green':'#32AF00',
+      },
+      filter:{
+        'medium':'drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.2))'
       },
       fontFamily: {
         'main': ['Source Sans Pro'],

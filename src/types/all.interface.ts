@@ -9,3 +9,10 @@ export interface IUser {
     videoUrl?:string
     poster?:string
 }
+
+export interface ITemplate{
+    id:string
+    name:string
+    type:'Email' | 'SMS' | 'WhatsApp'
+    text:string
+}

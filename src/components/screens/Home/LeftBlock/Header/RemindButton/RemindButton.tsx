@@ -1,6 +1,5 @@
 import {Dispatch, FC, SetStateAction} from 'react';
-import NotificationImg from '../../../../../../../public/Notification.svg'
-import Image from "next/image";
+import NotificationImg from '@/components/icons/Notification.svg'
 import {IUser} from "@/types/all.interface";
 import {useUsers} from "@/providers/UsersProvider";
 
@@ -22,7 +21,7 @@ const RemindButton: FC<IRemindButton> = ({selectedUsers,setSelectedUsers,setCoun
 
     return (
         <div onClick={() => handleRemind()} className={'cursor-pointer py-2 px-2 flex gap-2 items-center border border-solid border-primary'}>
-            <Image src={NotificationImg} alt={'Картинка'}/>
+            <NotificationImg alt={'Картинка'}/>
             <h4 className={'text-primary'}>Remind {selectedUsers} selected</h4>
         </div>
     );

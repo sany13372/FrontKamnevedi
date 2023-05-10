@@ -1,13 +1,12 @@
 import {FC} from 'react';
-import Image from "next/image";
-import AvatarImage from '../../../../../public/Avatar.svg'
-import ArrowDown from '../../../../../public/ArrowDown.svg'
+import AvatarImage from '@/components/icons/Avatar.svg'
+import ArrowDown from '@/components/icons/ArrowDown.svg'
 
 const Avatar: FC = () => {
     return (
-        <div className={'flex gap-2'}>
-            <Image  className={'cursor-pointer'} src={AvatarImage} alt={'Аватар'}/>
-            <Image className={'cursor-pointer'} src={ArrowDown} alt={'Иконка'}/>
+        <div className={'flex gap-2 items-center'}>
+            <AvatarImage  className={'cursor-pointer'}  alt={'Аватар'}/>
+            <ArrowDown className={'cursor-pointer'}  alt={'Иконка'}/>
         </div>
     );
 }

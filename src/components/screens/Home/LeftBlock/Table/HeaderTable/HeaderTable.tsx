@@ -1,11 +1,13 @@
 import {Dispatch, FC, SetStateAction, useState} from 'react';
 import BlockSort, {EnumsType} from './BlockSort/BlockSort'
+import {useUsers} from "@/providers/UsersProvider";
 
 interface IHeaderTable{
     setAllChecked:Dispatch<SetStateAction<boolean>>,
     allChecked:boolean
 }
 const HeaderTable: FC<IHeaderTable> = ({setAllChecked,allChecked}) => {
+    const {setUsers, users} = useUsers()
     const [typeSort, setTypeSort] = useState<string>('')
     return (
         <div className={'py-2 pl-3 bg-birus-bg  grid grid-cols-[50px_140px_140px_140px_200px_80px]  pr-3'}>
@@ -19,12 +21,12 @@ const HeaderTable: FC<IHeaderTable> = ({setAllChecked,allChecked}) => {
                     onChange={() => {}}
                     id="checkboxDefault"/>
             </div>
-            <BlockSort title={'First Name'} type={EnumsType.firstName} sortType={typeSort} setTypeSort={setTypeSort}/>
-            <BlockSort title={'Last Name'} type={EnumsType.lastName} sortType={typeSort} setTypeSort={setTypeSort}/>
-            <BlockSort title={'Status'} type={EnumsType.status} sortType={typeSort} setTypeSort={setTypeSort}/>
+            <BlockSort values={users} setValues={setUsers} title={'First Name'} type={EnumsType.firstName} sortType={typeSort} setTypeSort={setTypeSort}/>
+            <BlockSort values={users} setValues={setUsers} title={'Last Name'} type={EnumsType.lastName} sortType={typeSort} setTypeSort={setTypeSort}/>
+            <BlockSort values={users} setValues={setUsers} title={'Status'} type={EnumsType.status} sortType={typeSort} setTypeSort={setTypeSort}/>
             <div className={'flex  gap-4'}>
                 <h4 className={'text-header-text'}>Score / 250</h4>
-                <BlockSort type={EnumsType.firstName} title={'Rank'} sortType={null} setTypeSort={setTypeSort}/>
+                <BlockSort values={users} setValues={setUsers} type={EnumsType.firstName} title={'Rank'} sortType={null} setTypeSort={setTypeSort}/>
             </div>
             <div></div>
         </div>

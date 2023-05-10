@@ -4,7 +4,6 @@ import {useVideo} from "@/hooks/useVideo";
 import ActionsVideo from './ActionsVideo'
 const BlockVideo: FC = () => {
     const {selectUser,video,videoRef,actions} = useUsers()
-   // const {video, videoRef, actions} = useVideo()
     return (
         <div className={'mb-4 flex w-[100%] relative mb-[55px]   justify-center'}>
             <div

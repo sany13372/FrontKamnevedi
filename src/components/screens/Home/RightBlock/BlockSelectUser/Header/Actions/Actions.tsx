@@ -1,14 +1,13 @@
 import {FC} from 'react';
-import Image from "next/image";
 
 interface IActions{
     title:string
-    image:string
+    imag:any
 }
-const Actions: FC<IActions> = ({image,title}) => {
+const Actions: FC<IActions> = ({imag,title}) => {
     return (
         <div className={'flex gap-1'}>
-            <Image className={'cursor-pointer'} src={image} alt={'Картинка'}/>
+            {imag}
             <h4 className={'text-primary'}>{title}</h4>
         </div>
     );

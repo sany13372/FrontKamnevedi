@@ -1,14 +1,14 @@
 import {Dispatch, FC, SetStateAction, useEffect, useState} from 'react';
-import Image from "next/image";
-import SortImage from '../../../../../../../../public/Sort.svg'
-import {useUsers} from "@/providers/UsersProvider";
+import SortImage from '@/components/icons/Sort.svg'
 
 
 export enum EnumsType {
     'firstName' = 'firstName',
     'lastName' = 'lastName',
     'status' = 'status',
-
+    'name' = 'name',
+    'type' = 'type',
+    'text' = 'text'
 }
 
 interface IBlockSort {
@@ -16,10 +16,11 @@ interface IBlockSort {
     type: EnumsType
     sortType: string | null
     setTypeSort: Dispatch<SetStateAction<string>>
+    values:any
+    setValues:any
 }
 
-const BlockSort: FC<IBlockSort> = ({title, sortType, setTypeSort, type}) => {
-    const {setUsers, users} = useUsers()
+const BlockSort: FC<IBlockSort> = ({title, sortType, setTypeSort, type,values,setValues}) => {
     const [descending, setDescending] = useState<boolean>(true)
 
     const handleSort = () => {
@@ -32,11 +33,11 @@ const BlockSort: FC<IBlockSort> = ({title, sortType, setTypeSort, type}) => {
     useEffect(() => {
         if (sortType) {
             if (descending) {
-                const sortedUsers = [...users.sort((a, b) => a[type].localeCompare(b[type]))]
-                setUsers(sortedUsers)
+                const sortedUsers = [...values.sort((a, b) => a[type].localeCompare(b[type]))]
+                setValues(sortedUsers)
             } else {
-                const sortedUsers = [...users.sort((a, b) => b[type].localeCompare(a[type]))]
-                setUsers(sortedUsers)
+                const sortedUsers = [...values.sort((a, b) => b[type].localeCompare(a[type]))]
+                setValues(sortedUsers)
             }
         }
     }, [sortType, descending])
@@ -46,7 +47,7 @@ const BlockSort: FC<IBlockSort> = ({title, sortType, setTypeSort, type}) => {
              onClick={() => handleSort()}
         >
             <h4 className={'text-header-text'}>{title}</h4>
-            <Image src={SortImage} alt={'Картинка'}/>
+            <SortImage alt={'Картинка'}/>
         </div>
     );
 }

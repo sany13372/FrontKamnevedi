@@ -1,9 +1,9 @@
 import {FC, useEffect, useState} from 'react';
 import Share from './Share/Share'
 import ReactionVideo from './ReactionVideo/ReactionVideo'
-import LikeImg from '../../../../../../../public/Like.svg'
-import DisLikeImg from '../../../../../../../public/DissLike.svg'
-import HoldImg from '../../../../../../../public/tabler_hand-stop.svg'
+import LikeImg from '@/components/icons/Like.svg'
+import DisLikeImg from '@/components/icons/DissLike.svg'
+import HoldImg from '@/components/icons/tabler_hand-stop.svg'
 import {useUsers} from "@/providers/UsersProvider";
 import {IUser} from "@/types/all.interface";
 
@@ -32,9 +32,9 @@ const LineActionsVideo: FC = () => {
         <div className={'flex items-center flex-wrap justify-between'}>
             <Share/>
             <div className={'flex items-center gap-2'}>
-                <ReactionVideo title={'Shortlisted'} select={setType} image={LikeImg}/>
-                <ReactionVideo title={'Reject'} select={setType} image={DisLikeImg}/>
-                <ReactionVideo title={'On hold'} select={setType} image={HoldImg}/>
+                <ReactionVideo title={'Shortlisted'} select={setType} image={<LikeImg />}/>
+                <ReactionVideo title={'Reject'} select={setType} image={<DisLikeImg/>}/>
+                <ReactionVideo title={'On hold'} select={setType} image={<HoldImg/>}/>
             </div>
         </div>
     );

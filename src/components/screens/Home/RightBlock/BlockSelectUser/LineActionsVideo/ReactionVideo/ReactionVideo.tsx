@@ -1,15 +1,16 @@
 import {FC} from 'react';
-import Image from "next/image";
 
-interface IReactionVideo{
-    title:string
-    image:string
-    select:(title:string) => void
+interface IReactionVideo {
+    title: string
+    image: any
+    select: (title: string) => void
 }
-const ReactionVideo: FC<IReactionVideo> = ({image,title,select}) => {
+
+const ReactionVideo: FC<IReactionVideo> = ({image, title, select}) => {
     return (
-        <div onClick={() => select(title)} className={'py-2 px-2 cursor-pointer flex gap-2 border-solid border border-table-item'}>
-            <Image src={image} alt={'Картинка'}/>
+        <div onClick={() => select(title)}
+             className={'py-2 px-2 cursor-pointer items-center flex gap-2 border-solid border border-table-item'}>
+            {image}
             <h4 className={'text-primary'}>{title}</h4>
         </div>
     );
