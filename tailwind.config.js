@@ -28,9 +28,10 @@ module.exports = {
         'videoplayer-bg':'#f3f6fc',
         'modal-remind':'#ddecd9',
         'medium-green':'#32AF00',
+        'hover-blue':'#143ca0'
       },
-      filter:{
-        'medium':'drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.2))'
+      dropShadow:{
+        'medium':'(0px 1px 6px rgba(0, 0, 0, 0.2))'
       },
       fontFamily: {
         'main': ['Source Sans Pro'],

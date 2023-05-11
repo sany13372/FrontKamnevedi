@@ -3,14 +3,15 @@ import TwoArrow from '@/components/icons/TwoArrowLeft.svg'
 import Arrow from '@/components/icons/ArrowBlueLeft.svg'
 import CountsPages from './CountsPages/CountsPages'
 
-interface IPagination{
-    valueDefault:any
-    setValue:any
-    setValuePagination:any
-    limitData:number
-    classNameHash?:string
+interface IPagination {
+    valueDefault: any
+    setValue: any
+    setValuePagination: any
+    limitData: number
+    classNameHash?: string
 }
-const Pagination: FC<IPagination> = ({setValuePagination,setValue,valueDefault,limitData,classNameHash}) => {
+
+const Pagination: FC<IPagination> = ({setValuePagination, setValue, valueDefault, limitData, classNameHash}) => {
     //todo:Изменить после лимит на динамический
     const dataLimit = limitData
     const pageLimit = 5
@@ -57,7 +58,7 @@ const Pagination: FC<IPagination> = ({setValuePagination,setValue,valueDefault,l
     useEffect(() => {
         setValuePagination(getPaginatedData())
         setValue(getPaginatedData())
-    }, [currentPage])
+    }, [currentPage, valueDefault])
 
     return (
         <div className={'ml-4 flex items-center gap-2'}>

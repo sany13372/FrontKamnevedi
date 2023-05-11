@@ -1,19 +1,33 @@
-import {FC, useState} from 'react';
+import {FC, useEffect, useState} from 'react';
 import {IOptions} from './BlockOptions'
 import Checkbox from '@/components/UI/CheckBox'
+import {ITemplate} from "@/types/all.interface";
+import {useTemplate} from "@/providers/TemplateProvider";
 
-const BlockOptionsItem: FC<{ item: IOptions }> = ({item}) => {
-    const [isCheck, setIsCheck] = useState<boolean>(false)
+interface IBlockOptionsItem {
+    item: IOptions,
+    sortTemplate: (values: ITemplate[], setValues: any, typeSort: 'Email' | 'SMS' | 'WhatsApp', isCheck: boolean) => void
+}
+
+const BlockOptionsItem: FC<IBlockOptionsItem> = ({item, sortTemplate}) => {
+    const [isCheck, setIsCheck] = useState<boolean>(true)
+    const [skipUpdate, setSkipUpdate] = useState<number>(1)
+    const {setDataTemplates, dataTemplates} = useTemplate()
+    useEffect(() => {
+        if (!skipUpdate) {
+            sortTemplate(dataTemplates, setDataTemplates, item.typeSort, isCheck)
+        }
+        setSkipUpdate(0)
+    }, [isCheck])
     return (
-        <div className={'py-2 px-6 flex items-center gap-2'}>
+        <div className={'py-2 px-6 flex items-center gap-2'}
+        >
             <div className={'pb-1'}>
                 <Checkbox
                     width={'w-[0.8rem]'}
                     height={'h-[0.8rem]'}
                     isCheked={isCheck}
-                    onClick={(e) => {
-                        setIsCheck(!isCheck)
-                    }}/>
+                    onClick={() => setIsCheck(!isCheck)}/>
             </div>
             {item.icon}
             <div>

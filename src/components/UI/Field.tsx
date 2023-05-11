@@ -8,6 +8,7 @@ interface IField{
     handleKey?:any
     type?:string
 }
+
 const Field:FC<IField> = ({setValue,value,className,placeholder,type = 'text',handleKey}) => {
  return (
      <input

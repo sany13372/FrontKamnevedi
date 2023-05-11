@@ -33,10 +33,10 @@ const BlockSort: FC<IBlockSort> = ({title, sortType, setTypeSort, type,values,se
     useEffect(() => {
         if (sortType) {
             if (descending) {
-                const sortedUsers = [...values.sort((a, b) => a[type].localeCompare(b[type]))]
+                const sortedUsers = [...values.sort((a:any, b:any) => a[type].localeCompare(b[type]))]
                 setValues(sortedUsers)
             } else {
-                const sortedUsers = [...values.sort((a, b) => b[type].localeCompare(a[type]))]
+                const sortedUsers = [...values.sort((a:any, b:any) => b[type].localeCompare(a[type]))]
                 setValues(sortedUsers)
             }
         }

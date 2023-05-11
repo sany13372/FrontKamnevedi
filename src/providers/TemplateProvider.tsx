@@ -12,8 +12,6 @@ export interface ITemplateContext {
     setSelectTemplate: (selectTemplate: ITemplate) => void
     modalType: string
     setModalType: (modalType: string) => void
-    isReminds: boolean
-    setIsReminds: (reminds: boolean) => void
 }
 
 export const templatesDefault: ITemplate[] = [
@@ -167,15 +165,14 @@ export const TemplateContext = createContext<ITemplateContext>({} as ITemplateCo
 
 const TemplateProvider: FC<PropsWithChildren> = ({children}) => {
 
-    const [dataTemplates, setDataTemplates] = useState<ITemplate[]>(templatesDefault)
+    const [dataTemplates, setDataTemplates] = useState<ITemplate[]>([])
     const [templates, setTemplates] = useState<ITemplate[]>([])
     const [templatesPaginate, setTemplatesPaginate] = useState<ITemplate[]>([])
     const [selectTemplate, setSelectTemplate] = useState<ITemplate>({} as ITemplate)
-    const [isReminds, setIsReminds] = useState<boolean>(false)
     const [modalType, setModalType] = useState<string>('')
 
     useEffect(() => {
-        //setDataTemplates(templatesDefault)
+        setDataTemplates(templatesDefault)
     }, [])
 
     const values = useMemo(() => ({
@@ -185,13 +182,11 @@ const TemplateProvider: FC<PropsWithChildren> = ({children}) => {
         setSelectTemplate,
         modalType,
         setModalType,
-        isReminds,
-        setIsReminds,
         templatesPaginate,
         setTemplatesPaginate,
         dataTemplates,
         setDataTemplates
-    }), [templates, selectTemplate, isReminds, templatesPaginate, modalType])
+    }), [templates, selectTemplate, templatesPaginate, modalType, dataTemplates])
 
     return <TemplateContext.Provider value={values}>{children}</TemplateContext.Provider>
 }
