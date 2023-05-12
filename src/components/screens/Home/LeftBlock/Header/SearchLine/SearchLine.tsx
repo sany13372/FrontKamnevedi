@@ -1,20 +1,30 @@
-import {Dispatch, FC, SetStateAction, useEffect} from 'react';
+import {Dispatch, FC, SetStateAction, useCallback, useEffect} from 'react';
 import SearchImg from '@/components/icons/Search.svg'
 import Field from "@/components/UI/Field";
-import {IUser} from "@/types/all.interface";
 import {useDebounce} from "@/hooks/useDebounce";
+import CrossImg from '@/components/icons/CrossMini.svg'
 
-interface ISearchLine{
-    defaultValue:any
-    value:any
-    setValue:any
-    searchQuery:string
-    setSearchQuery:Dispatch<SetStateAction<string>>
-    placeholder:string
-    typeSort:any
-    className?:string
+interface ISearchLine {
+    defaultValue: any
+    value: any
+    setValue: any
+    searchQuery: string
+    setSearchQuery: Dispatch<SetStateAction<string>>
+    placeholder: string
+    typeSort: any
+    className?: string
 }
-const SearchLine: FC<ISearchLine> = ({searchQuery,defaultValue,setSearchQuery,value,setValue,placeholder,typeSort,className}) => {
+
+const SearchLine: FC<ISearchLine> = ({
+                                         searchQuery,
+                                         defaultValue,
+                                         setSearchQuery,
+                                         value,
+                                         setValue,
+                                         placeholder,
+                                         typeSort,
+                                         className
+                                     }) => {
 
     const debounceSearch = useDebounce(searchQuery, 500)
 
@@ -35,7 +45,6 @@ const SearchLine: FC<ISearchLine> = ({searchQuery,defaultValue,setSearchQuery,va
         }
     }, [searchQuery])
 
-
     return (
         <div className={`flex py-1.5 px-2 border border-solid border-table-item items-center ${className} `}>
             <Field value={searchQuery}
@@ -43,7 +52,10 @@ const SearchLine: FC<ISearchLine> = ({searchQuery,defaultValue,setSearchQuery,va
                    className={'w-72'}
                    placeholder={placeholder}
             />
-            <SearchImg onClick={() => searchHandle()} alt={'Картинка'} className={'cursor-pointer'}/>
+            {searchQuery === '' ?
+                <SearchImg onClick={() => searchHandle()} alt={'Картинка'} className={'cursor-pointer'}/> :
+                <CrossImg onClick={() => setSearchQuery('')} alt={'Картинка'}
+                          className={'cursor-pointer fill-arrow-pg'}/>}
         </div>
     );
 }

@@ -85,24 +85,6 @@ const ModalTemplateCreate: FC<{ setEditItem: Dispatch<SetStateAction<string>> }>
         dataTemplates[index] = templateBody
         const copy = Object.assign({}, dataTemplates)
         setTemplates([...dataTemplates])
-        //setDataTemplates([...dataTemplates])
-
-        // setDataTemplates(
-        //     dataTemplates.map(el => (el.id === selectTemplate.id ? Object.assign({}, el, {
-        //         type: valueType,
-        //         name: name,
-        //         text: text
-        //     }) : el))
-        //     // dataTe.map(el => (el.id === id ? Object.assign({}, el, { text }) : el))
-        // );
-        // setDataTemplates([...dataTemplates, {
-        //     id: selectTemplate.id, type: valueType,
-        //     name: name,
-        //     text: text
-        // }])
-        // setDataTemplates((prev:ITemplate[]) => {
-        //     return prev
-        // })
         setModalType('')
         //@ts-ignore
         setSelectTemplate({})
