@@ -8,7 +8,6 @@ import {Dropdown, MenuProps} from "antd";
 import {ITemplate} from "@/types/all.interface";
 import ButtonBlue from "@/components/UI/ButtonBlue";
 import ButtonWhite from "@/components/UI/ButtonWhite";
-import {useOnClickOutside} from "@/hooks/useOnClickOutside";
 
 
 const ModalTemplateCreate: FC<{ setEditItem: Dispatch<SetStateAction<string>> }> = ({setEditItem}) => {

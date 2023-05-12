@@ -13,7 +13,7 @@ const TableHeader: FC<IHeaderTable> = ({allChecked,setAllChecked}) => {
     const [typeSort, setTypeSort] = useState<string>('')
 
     return (
-        <div className={'py-2 pl-3 bg-birus-bg  grid grid-cols-[50px_220px_160px_786px_100px_40px]  pr-3'}>
+        <div className={'py-2 pl-3 bg-birus-bg  grid grid-cols-[3.6%_16.2%_11.7%_57.9%_7.3%_2.9%]  pr-3'}>
             <div className="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
                 <input
                     onClick={() => setAllChecked(!allChecked)}

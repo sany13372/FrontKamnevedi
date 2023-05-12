@@ -36,12 +36,12 @@ const TableItem: FC<ITableItem> = ({
         setDataTemplates(newData)
     }
     const copyTemplate = () => {
-        const newData:any = {}
+        const newData: any = {}
         newData.name = `copy ${template.name}`
         newData.text = `copy ${template.text}`
         newData.type = template.type
         newData.id = String(new Date())
-        setDataTemplates([newData,...dataTemplates])
+        setDataTemplates([newData, ...dataTemplates])
     }
 
     const options: IOptions[] = useMemo(() => ([
@@ -80,7 +80,7 @@ const TableItem: FC<ITableItem> = ({
 
     return (
         <div
-            className={cn('group relative py-2 pl-3 bg-white text-black border-b border-solid border-table-item  grid grid-cols-[50px_220px_160px_786px_100px_40px]  pr-3', {
+            className={cn('group relative py-2 pl-3 bg-white text-black border-b border-solid border-table-item  grid grid-cols-[3.6%_16.2%_11.7%_57.9%_7.3%_2.9%]  pr-3', {
                 'hover:bg-table-item': !isCheck
             })}>
             <div className="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
@@ -112,14 +112,14 @@ const TableItem: FC<ITableItem> = ({
             <div className={'ml-2'}>
                 Mar 02
             </div>
-            <div className={'flex items-center'}>
+            <div className={'flex items-center relative'}>
                 <MoreImg className={'cursor-pointer'}
-                         onClick={() => editItem !== template.id ? setEditItem(template.id) : setEditItem('')}
+                         onClick={() => editItem !== template.id ? setEditItem(template.id) : console.log('ww')}
                          alt={'Картинка'}/>
+                {editItem === template.id && <BlockEdit setEditItem={setEditItem} classNameBlock={'right-0 top-[80%]'}
+                                                        options={options}/>
+                }
             </div>
-            {editItem === template.id && <BlockEdit setEditItem={setEditItem} classNameBlock={'right-0 top-[80%]'}
-                                                    options={options}/>
-            }
         </div>
     );
 }
