@@ -72,26 +72,26 @@ export const useVideo = () => {
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             switch (e.key) {
-                case 'ArrowRight': {
-                    fastForward()
-                    break
-                }
+                // case 'ArrowRight': {
+                //     fastForward()
+                //     break
+                // }
+                //
+                // case 'ArrowLeft': {
+                //     revert()
+                //     break
+                // }
 
-                case 'ArrowLeft': {
-                    revert()
-                    break
-                }
+                // case ' ': {
+                //     e.preventDefault()
+                //     toggleVideo()
+                //     break
+                // }
 
-                case ' ': {
-                    e.preventDefault()
-                    toggleVideo()
-                    break
-                }
-
-                case 'f': {
-                    fullScreen()
-                    break
-                }
+                // case 'f': {
+                //     fullScreen()
+                //     break
+                // }
 
                 default: {
                     return

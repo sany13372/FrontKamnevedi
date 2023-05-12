@@ -19,14 +19,12 @@ const ModalTemplateCreate: FC<{ setEditItem: Dispatch<SetStateAction<string>> }>
         dataTemplates,
         selectTemplate,
         setSelectTemplate,
-        templates,
         setTemplates
     } = useTemplate()
     const [valueType, setValueType] = useState<any>('')
     const [name, setName] = useState<string>('')
     const [text, setText] = useState<string>('')
     const ref = useRef(null)
-    // const elem = useOnClickOutside(ref,() => setModalType(''))
 
     useEffect(() => {
         if (selectTemplate) {
@@ -74,6 +72,10 @@ const ModalTemplateCreate: FC<{ setEditItem: Dispatch<SetStateAction<string>> }>
         clearFields()
     }
 
+    const insertAttribute = () => {
+        setText(`${text} {{}}`)
+    }
+
     const updateTemplate = () => {
         const templateBody: ITemplate = {
             id: selectTemplate.id,
@@ -83,8 +85,7 @@ const ModalTemplateCreate: FC<{ setEditItem: Dispatch<SetStateAction<string>> }>
         }
         const index = dataTemplates.findIndex((template) => template.id === selectTemplate.id)
         dataTemplates[index] = templateBody
-        const copy = Object.assign({}, dataTemplates)
-        setTemplates([...dataTemplates])
+        setDataTemplates([...dataTemplates])
         setModalType('')
         //@ts-ignore
         setSelectTemplate({})
@@ -131,7 +132,10 @@ const ModalTemplateCreate: FC<{ setEditItem: Dispatch<SetStateAction<string>> }>
                               className={'resize w-[490px] mb-5  h-[100px] flex items-start mt-5 bg-transparent border w-full border-solid border-table-item'}/>
                 </div>
                 <div className={'flex justify-between px-4'}>
-                    <div className={'flex items-center cursor-pointer'}>
+                    <div
+                        className={'flex items-center cursor-pointer'}
+                        onClick={() => insertAttribute()}
+                    >
                         <PlusImg className={'fill-arrow-pg'}/>
                         <div className={'text-primary'}>Insert attribute</div>
                     </div>
