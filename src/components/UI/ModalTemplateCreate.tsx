@@ -8,6 +8,7 @@ import {Dropdown, MenuProps} from "antd";
 import {ITemplate} from "@/types/all.interface";
 import ButtonBlue from "@/components/UI/ButtonBlue";
 import ButtonWhite from "@/components/UI/ButtonWhite";
+import {getRandomNumber} from "@/utils/randomNumber";
 
 
 const ModalTemplateCreate: FC<{ setEditItem: Dispatch<SetStateAction<string>> }> = ({setEditItem}) => {
@@ -61,7 +62,7 @@ const ModalTemplateCreate: FC<{ setEditItem: Dispatch<SetStateAction<string>> }>
 
     const createTemplate = () => {
         const newTemplate: ITemplate = {
-            id: '55',
+            id: getRandomNumber(1,1000),
             name: name,
             text: text,
             type: valueType
@@ -81,6 +82,9 @@ const ModalTemplateCreate: FC<{ setEditItem: Dispatch<SetStateAction<string>> }>
         const index = dataTemplates.findIndex((template) => template.id === selectTemplate.id)
         dataTemplates[index] = templateBody
         setDataTemplates([...dataTemplates])
+        // setDataTemplates((prev:ITemplate[]) => {
+        //     return prev
+        // })
         setModalType('')
         //@ts-ignore
         setSelectTemplate({})

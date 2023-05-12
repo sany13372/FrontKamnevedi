@@ -23,6 +23,7 @@ const TopBar: FC<ITopBar> = ({setSelectedTemplates, selectedTemplates, setAllChe
         dataTemplates,
         setModalType
     } = useTemplate()
+
     return (
         <div
             className={`flex items-center justify-center h-[60px] bg-birus-bg px-2 flex-wrap min-[957px]:pr-12 min-[957px]:pl-10 py-2  min-[957px]:justify-between`}>

@@ -62,7 +62,7 @@ const Pagination: FC<IPagination> = ({setValuePagination, setValue, valueDefault
 
     return (
         <div className={'ml-4 flex items-center gap-2'}>
-            <TwoArrow className={'white hover:text-white cursor-pointer text-arrow-pg'} alt={'Картинка'}
+            <TwoArrow className={'cursor-pointer fill-lite-blue hover:fill-arrow-pg'} alt={'Картинка'}
                       onClick={() => firstPage()}/>
             <Arrow className={'text-arrow-pg cursor-pointer'} onClick={() => goToPreviousPage()}
                    alt={'Картинка'}/>
@@ -70,7 +70,7 @@ const Pagination: FC<IPagination> = ({setValuePagination, setValue, valueDefault
             <input type="number" placeholder={'#'}
                    className={`w-[40px] h-[40px] text-gray-500 text-center .placeholder-gray-900 border border-solid border-table-item ${classNameHash} `}/>
             <Arrow className={'rotate-180 cursor-pointer'} onClick={() => goToNextPage()} alt={'Картинка'}/>
-            <TwoArrow className={'rotate-180 cursor-pointer'} alt={'Картинка'} onClick={() => lastPage()}/>
+            <TwoArrow className={'rotate-180 cursor-pointer fill-lite-blue hover:fill-arrow-pg'} alt={'Картинка'} onClick={() => lastPage()}/>
         </div>
     );
 }

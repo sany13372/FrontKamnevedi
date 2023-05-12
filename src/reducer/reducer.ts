@@ -15,7 +15,7 @@ type ReducerAction = {
     type:REDUCER_ACTION_TYPE
     payload:any | IUser
 }
-export const initialState:IInitialState = {
+export const initialState = {
     users:[
         {
             firstName:'Ben',

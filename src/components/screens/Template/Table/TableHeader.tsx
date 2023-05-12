@@ -27,7 +27,7 @@ const TableHeader: FC<IHeaderTable> = ({allChecked,setAllChecked}) => {
             <BlockSort values={templates} setValues={setTemplates} title={'Name'} type={EnumsType.name} sortType={typeSort} setTypeSort={setTypeSort}/>
             <BlockSort values={templates} setValues={setTemplates} title={'Type'} type={EnumsType.type} sortType={typeSort} setTypeSort={setTypeSort}/>
             <BlockSort values={templates} setValues={setTemplates} title={'Text'} type={EnumsType.text} sortType={typeSort} setTypeSort={setTypeSort}/>
-            <BlockSort values={templates} setValues={setTemplates} title={'Created'} type={EnumsType.text} sortType={typeSort} setTypeSort={setTypeSort}/>
+            <BlockSort values={templates} setValues={setTemplates} title={'Created'} type={null} sortType={typeSort} setTypeSort={setTypeSort}/>
             <div></div>
         </div>
     );

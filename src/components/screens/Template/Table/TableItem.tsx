@@ -1,4 +1,4 @@
-import {Dispatch, FC, SetStateAction, useEffect, useMemo, useState} from 'react';
+import {Dispatch, FC, SetStateAction, useCallback, useEffect, useMemo, useState} from 'react';
 import {ITemplate} from "@/types/all.interface";
 import cn from 'clsx'
 import {useTemplate} from "@/providers/TemplateProvider";
@@ -8,6 +8,7 @@ import EditImg from "@/components/icons/Edit.svg";
 import DeletedImg from "@/components/icons/Trash.svg";
 import CopyImg from "@/components/icons/Copy.svg";
 import BlockEdit from "@/components/screens/Template/Table/BlockEdit/BlockEdit";
+import {getRandomNumber} from "@/utils/randomNumber";
 
 interface ITableItem {
     template: ITemplate
@@ -35,14 +36,25 @@ const TableItem: FC<ITableItem> = ({
         const newData = dataTemplates.filter((temp) => temp.id !== template.id)
         setDataTemplates(newData)
     }
-    const copyTemplate = () => {
-        const newData: any = {}
-        newData.name = `copy ${template.name}`
-        newData.text = `copy ${template.text}`
-        newData.type = template.type
-        newData.id = String(new Date())
-        setDataTemplates([newData, ...dataTemplates])
-    }
+    const copyTemplate = useCallback(() =>
+        {
+            console.log(template.name)
+            let newData: ITemplate = {
+                type:template.type,
+                name:`copy ${template.name}`,
+                text: `copy ${template.text}`,
+                id: getRandomNumber(10,1000)
+            }
+            // newData.name = `copy ${template.name}`
+            // newData.text = `copy ${template.text}`
+            // newData.type = template.type
+            // newData.id = String(new Date())
+            setDataTemplates([newData, ...dataTemplates])
+            console.log(newData)
+        }
+    ,[template])
+
+    console.log(template.name)
 
     const options: IOptions[] = useMemo(() => ([
         {
@@ -114,7 +126,7 @@ const TableItem: FC<ITableItem> = ({
             </div>
             <div className={'flex items-center relative'}>
                 <MoreImg className={'cursor-pointer'}
-                         onClick={() => editItem !== template.id ? setEditItem(template.id) : console.log('ww')}
+                         onClick={() => editItem !== template.id ? setEditItem(template.id) : setEditItem('')}
                          alt={'Картинка'}/>
                 {editItem === template.id && <BlockEdit setEditItem={setEditItem} classNameBlock={'right-0 top-[80%]'}
                                                         options={options}/>

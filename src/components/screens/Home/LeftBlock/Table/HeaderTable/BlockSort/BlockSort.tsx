@@ -13,31 +13,33 @@ export enum EnumsType {
 
 interface IBlockSort {
     title: string
-    type: EnumsType
+    type: EnumsType | null
     sortType: string | null
     setTypeSort: Dispatch<SetStateAction<string>>
-    values:any
-    setValues:any
+    values: any
+    setValues: any
 }
 
-const BlockSort: FC<IBlockSort> = ({title, sortType, setTypeSort, type,values,setValues}) => {
+const BlockSort: FC<IBlockSort> = ({title, sortType, setTypeSort, type, values, setValues}) => {
     const [descending, setDescending] = useState<boolean>(true)
 
     const handleSort = () => {
-        if (sortType !== null) {
+        if (sortType !== null && type) {
             setTypeSort(type)
             setDescending(!descending)
         }
     }
 
     useEffect(() => {
-        if (sortType) {
-            if (descending) {
-                const sortedUsers = [...values.sort((a:any, b:any) => a[type].localeCompare(b[type]))]
-                setValues(sortedUsers)
-            } else {
-                const sortedUsers = [...values.sort((a:any, b:any) => b[type].localeCompare(a[type]))]
-                setValues(sortedUsers)
+        if (type) {
+            if (sortType) {
+                if (descending) {
+                    const sortedUsers = [...values.sort((a: any, b: any) => a[type].localeCompare(b[type]))]
+                    setValues(sortedUsers)
+                } else {
+                    const sortedUsers = [...values.sort((a: any, b: any) => b[type].localeCompare(a[type]))]
+                    setValues(sortedUsers)
+                }
             }
         }
     }, [sortType, descending])
