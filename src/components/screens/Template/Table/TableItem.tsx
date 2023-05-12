@@ -1,4 +1,4 @@
-import {Dispatch, FC, SetStateAction, useCallback, useEffect, useMemo, useState} from 'react';
+import {Dispatch, FC, memo, SetStateAction, useCallback, useEffect, useMemo, useState} from 'react';
 import {ITemplate} from "@/types/all.interface";
 import cn from 'clsx'
 import {useTemplate} from "@/providers/TemplateProvider";
@@ -26,53 +26,6 @@ const TableItem: FC<ITableItem> = ({
                                        editItem
                                    }) => {
     const [isCheck, setIsCheck] = useState<boolean>(false)
-    const {setSelectTemplate, setModalType, setDataTemplates, dataTemplates} = useTemplate()
-    const editTemplate = () => {
-        setModalType('edit')
-        setSelectTemplate(template)
-    }
-
-    const deletedTemplate = () => {
-        const newData = dataTemplates.filter((temp) => temp.id !== template.id)
-        setDataTemplates(newData)
-    }
-    const copyTemplate = useCallback(() =>
-        {
-            console.log(template.name)
-            let newData: ITemplate = {
-                type:template.type,
-                name:`copy ${template.name}`,
-                text: `copy ${template.text}`,
-                id: getRandomNumber(10,1000)
-            }
-            // newData.name = `copy ${template.name}`
-            // newData.text = `copy ${template.text}`
-            // newData.type = template.type
-            // newData.id = String(new Date())
-            setDataTemplates([newData, ...dataTemplates])
-            console.log(newData)
-        }
-    ,[template])
-
-    console.log(template.name)
-
-    const options: IOptions[] = useMemo(() => ([
-        {
-            icon: <EditImg/>,
-            title: 'Edit',
-            click: () => editTemplate()
-        },
-        {
-            icon: <DeletedImg className={'fill-black'}/>,
-            title: 'Delete',
-            click: () => deletedTemplate()
-        },
-        {
-            icon: <CopyImg/>,
-            title: 'Clone',
-            click: () => copyTemplate()
-        },
-    ]), [])
 
     useEffect(() => {
         if (allChecked) {
@@ -129,11 +82,11 @@ const TableItem: FC<ITableItem> = ({
                          onClick={() => editItem !== template.id ? setEditItem(template.id) : setEditItem('')}
                          alt={'Картинка'}/>
                 {editItem === template.id && <BlockEdit setEditItem={setEditItem} classNameBlock={'right-0 top-[80%]'}
-                                                        options={options}/>
+                                                        template={template}/>
                 }
             </div>
         </div>
     );
 }
 
-export default TableItem;
+export default memo(TableItem);

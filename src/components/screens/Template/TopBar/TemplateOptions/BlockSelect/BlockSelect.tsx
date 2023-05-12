@@ -1,4 +1,4 @@
-import {FC, useMemo, useRef, useState} from 'react';
+import {FC, memo, useCallback, useMemo, useRef, useState} from 'react';
 import BlockOptions, {IOptions} from './BlockOptions/BlockOptions'
 import Arrow from '@/components/icons/ArrowBlue.svg'
 import EmailImg from "@/components/icons/TemplateEmail.svg";
@@ -13,7 +13,7 @@ const BlockSelect: FC = () => {
     const [showTypeTemplate, setShowTypeTemplate] = useState<boolean>(false)
     const {dataTemplates} = useTemplate()
     const ref = useRef(null)
-    const elem = useOnClickOutside(ref,() => setShowTypeTemplate(false))
+    const elem = useOnClickOutside(ref, () => setShowTypeTemplate(false))
 
     const sortTemplate = (values: ITemplate[], setValues: any, typeSort: 'Email' | 'SMS' | 'WhatsApp', isCheck: boolean) => {
         if (isCheck) {
@@ -24,6 +24,7 @@ const BlockSelect: FC = () => {
             setValues(temps)
         }
     }
+
 
     const options: IOptions[] = useMemo(() => ([
         {
@@ -60,6 +61,6 @@ const BlockSelect: FC = () => {
     )
 }
 
-export default BlockSelect
+export default memo(BlockSelect)
 
 

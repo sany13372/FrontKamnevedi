@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {FC, memo} from 'react';
 import BlockSelect from './BlockSelect/BlockSelect'
 
 const TemplateOptions: FC = () => {
@@ -12,4 +12,4 @@ const TemplateOptions: FC = () => {
     );
 }
 
-export default TemplateOptions;
+export default memo(TemplateOptions);

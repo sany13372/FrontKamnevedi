@@ -1,4 +1,4 @@
-import {Dispatch, FC, SetStateAction, useState} from 'react';
+import {Dispatch, FC, memo, SetStateAction, useState} from 'react';
 import TemplateOptions from './TemplateOptions/TemplateOptions'
 import SearchLine from "@/components/screens/Home/LeftBlock/Header/SearchLine/SearchLine";
 import {useTemplate} from "@/providers/TemplateProvider";
@@ -47,4 +47,4 @@ const TopBar: FC<ITopBar> = ({setSelectedTemplates, selectedTemplates, setAllChe
     );
 }
 
-export default TopBar;
+export default memo(TopBar);

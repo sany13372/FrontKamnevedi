@@ -18,7 +18,9 @@ const ModalTemplateCreate: FC<{ setEditItem: Dispatch<SetStateAction<string>> }>
         setDataTemplates,
         dataTemplates,
         selectTemplate,
-        setSelectTemplate
+        setSelectTemplate,
+        templates,
+        setTemplates
     } = useTemplate()
     const [valueType, setValueType] = useState<any>('')
     const [name, setName] = useState<string>('')
@@ -62,7 +64,7 @@ const ModalTemplateCreate: FC<{ setEditItem: Dispatch<SetStateAction<string>> }>
 
     const createTemplate = () => {
         const newTemplate: ITemplate = {
-            id: getRandomNumber(1,1000),
+            id: getRandomNumber(1, 1000),
             name: name,
             text: text,
             type: valueType
@@ -81,7 +83,23 @@ const ModalTemplateCreate: FC<{ setEditItem: Dispatch<SetStateAction<string>> }>
         }
         const index = dataTemplates.findIndex((template) => template.id === selectTemplate.id)
         dataTemplates[index] = templateBody
-        setDataTemplates([...dataTemplates])
+        const copy = Object.assign({}, dataTemplates)
+        setTemplates([...dataTemplates])
+        //setDataTemplates([...dataTemplates])
+
+        // setDataTemplates(
+        //     dataTemplates.map(el => (el.id === selectTemplate.id ? Object.assign({}, el, {
+        //         type: valueType,
+        //         name: name,
+        //         text: text
+        //     }) : el))
+        //     // dataTe.map(el => (el.id === id ? Object.assign({}, el, { text }) : el))
+        // );
+        // setDataTemplates([...dataTemplates, {
+        //     id: selectTemplate.id, type: valueType,
+        //     name: name,
+        //     text: text
+        // }])
         // setDataTemplates((prev:ITemplate[]) => {
         //     return prev
         // })
@@ -94,14 +112,15 @@ const ModalTemplateCreate: FC<{ setEditItem: Dispatch<SetStateAction<string>> }>
 
     return (
         <div className="bg-black bg-opacity-50 fixed inset-0 z-[10] w-full h-[100%] flex justify-center items-center"
+             onClick={() => setModalType('')}
              id="overlay">
             <div
                 ref={ref}
                 className={cn("bg-white  pb-4 w-[540px]  rounded shadow-xl text-gray-800", {
-                'h-[380px]': modalType === 'create',
-                'h-[330px]': modalType !== 'create'
-            })}
-                 onClick={(e) => e.stopPropagation()}
+                    'h-[380px]': modalType === 'create',
+                    'h-[330px]': modalType !== 'create'
+                })}
+                onClick={(e) => e.stopPropagation()}
             >
                 <div className="flex h-[60px] bg-blue-bg px-5 justify-between items-center">
                     <div className={'text-white text-xl'}>

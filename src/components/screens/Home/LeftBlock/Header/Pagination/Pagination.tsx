@@ -58,6 +58,7 @@ const Pagination: FC<IPagination> = ({setValuePagination, setValue, valueDefault
     useEffect(() => {
         setValuePagination(getPaginatedData())
         setValue(getPaginatedData())
+        console.log('work')
     }, [currentPage, valueDefault])
 
     return (
@@ -70,7 +71,8 @@ const Pagination: FC<IPagination> = ({setValuePagination, setValue, valueDefault
             <input type="number" placeholder={'#'}
                    className={`w-[40px] h-[40px] text-gray-500 text-center .placeholder-gray-900 border border-solid border-table-item ${classNameHash} `}/>
             <Arrow className={'rotate-180 cursor-pointer'} onClick={() => goToNextPage()} alt={'Картинка'}/>
-            <TwoArrow className={'rotate-180 cursor-pointer fill-lite-blue hover:fill-arrow-pg'} alt={'Картинка'} onClick={() => lastPage()}/>
+            <TwoArrow className={'rotate-180 cursor-pointer fill-lite-blue hover:fill-arrow-pg'} alt={'Картинка'}
+                      onClick={() => lastPage()}/>
         </div>
     );
 }

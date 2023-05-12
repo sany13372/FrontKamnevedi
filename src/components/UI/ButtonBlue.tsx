@@ -1,4 +1,4 @@
-import {FC, PropsWithChildren} from 'react';
+import {FC, memo, PropsWithChildren} from 'react';
 
 interface IButtonBlue extends PropsWithChildren {
     className: string
@@ -15,4 +15,4 @@ const ButtonBlue: FC<IButtonBlue> = ({children, onClick, className}) => {
     );
 }
 
-export default ButtonBlue;
+export default memo(ButtonBlue);

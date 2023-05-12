@@ -20,4 +20,4 @@ const Table: FC<ITable> = ({setSelectedTemplates, setEditItem, editItem,setAllCh
     );
 }
 
-export default Table;
+export default  Table;

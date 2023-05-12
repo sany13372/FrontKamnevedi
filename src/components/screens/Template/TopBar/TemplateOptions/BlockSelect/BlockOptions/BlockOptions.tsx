@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {FC, memo} from 'react';
 import BlockOptionsItem from './BlockOptionsItem'
 import cn from 'clsx'
 import {ITemplate} from "@/types/all.interface";
@@ -31,4 +31,4 @@ const BlockOptions: FC<IBlockOptions> = ({options, classNameBlock, showTypeTempl
     );
 }
 
-export default BlockOptions;
+export default memo(BlockOptions);

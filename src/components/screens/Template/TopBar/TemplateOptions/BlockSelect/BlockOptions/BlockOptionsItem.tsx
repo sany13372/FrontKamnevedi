@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from 'react';
+import {FC, memo, useEffect, useState} from 'react';
 import {IOptions} from './BlockOptions'
 import Checkbox from '@/components/UI/CheckBox'
 import {ITemplate} from "@/types/all.interface";
@@ -14,7 +14,7 @@ const BlockOptionsItem: FC<IBlockOptionsItem> = ({item, sortTemplate}) => {
     const [skipUpdate, setSkipUpdate] = useState<number>(1)
     const {setDataTemplates, dataTemplates} = useTemplate()
     useEffect(() => {
-        if (!skipUpdate) {
+        if (!skipUpdate && item.typeSort) {
             sortTemplate(dataTemplates, setDataTemplates, item.typeSort, isCheck)
         }
         setSkipUpdate(0)
@@ -37,4 +37,4 @@ const BlockOptionsItem: FC<IBlockOptionsItem> = ({item, sortTemplate}) => {
     );
 }
 
-export default BlockOptionsItem;
+export default memo(BlockOptionsItem);
