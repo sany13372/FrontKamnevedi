@@ -1,0 +1,38 @@
+.action{
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #FF6E00;
+  backdrop-filter: blur(20px);
+  border-radius: 2.875rem;
+  font-family: 'Gilroy-Bold';
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 129%;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #EFEFEF;
+  > div{
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    font-family: 'Gilroy-Semibold';
+    line-height: 133%;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--black);
+    width: 20px;
+    height: 20px;
+    background: var(--orange);
+    border-radius: 16px;
+  }
+  &:hover{
+    transition: border 0.3s ease-in-out;
+    border: 1px solid white;
+  }
+}

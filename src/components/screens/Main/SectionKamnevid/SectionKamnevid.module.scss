@@ -1,0 +1,46 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12.5625rem 3.75rem 15.5rem 3.75rem;
+  > h1 {
+
+  }
+
+  >h5 {
+    font-family: Gilroy-Bold;
+    font-size: 1.25rem;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+  }
+}
+
+.title{
+  margin-top: 2.875rem;
+  margin-bottom: 2.5625rem;
+}
+
+.mouse{
+  position: relative;
+  margin-top: 5.375rem;
+  &::after{
+    content: '';
+    top: 20%;
+    left: 49%;
+    position: absolute;
+    width: 2px;
+    height: 8px;
+    animation: movement 1s infinite alternate ease-in-out;
+    background-color: var(--mediumWhite);
+  }
+
+}
+
+@keyframes movement{
+  0%{
+    top: 20%;
+  }
+  100%{
+    top: 50%;
+  }
+}

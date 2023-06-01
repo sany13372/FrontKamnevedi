@@ -1,12 +1,20 @@
-import {FC} from 'react';
-import Left from "@/components/Header/Left/Left";
-import Right from "@/components/Header/Right/Right";
+import {FC, useEffect, useState} from 'react';
+import LeftBlock from "./LeftBlock/LeftBlock";
+import styles from './Header.module.scss'
+import RightBlock from "@/components/Header/RightBlock/RightBlock";
+import CenterTitle from "@/components/Header/CenterTitle/CenterTitle";
 
 const Header: FC = () => {
+    const [offset,setOffset] = useState<number>(0)
+    useEffect(()=>{
+
+    },[])
     return (
-        <header className={'flex bg-header-bg max-[650px]:justify-end  min-[780px]:px-10 px-2 py-2.5 justify-between'}>
-            <Left/>
-            <Right/>
+        <header className={styles.header}>
+            <LeftBlock/>
+            {offset > 80 && <CenterTitle/>}
+            <CenterTitle/>
+            <RightBlock/>
         </header>
     );
 }

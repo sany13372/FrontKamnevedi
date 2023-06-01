@@ -1,0 +1,12 @@
+.dot {
+  //margin-top: -8px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #FF6E00;
+  border-radius: 26px;
+  background-color: transparent;
+
+  &.active {
+    background: #FF6E00;
+  }
+}

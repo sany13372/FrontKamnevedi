@@ -1,0 +1,60 @@
+.block {
+  display: flex;
+  gap: 3.6875rem;
+  align-items: center;
+  font-family: 'Gilroy-Bold';
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 129%;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mediumWhite);
+
+  > nav {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    > h4 {
+      margin-left: 0.5rem;
+    }
+    &:hover{
+      .navicon:after{
+        transition: top 0.2s ease-in-out;
+        top: 7px;
+      }
+      .navicon:before{
+        transition: bottom 0.2s ease-in-out;
+        bottom: 7px;
+      }
+    }
+  }
+
+}
+
+.navicon {
+  cursor: pointer;
+  background-color: var(--orange);
+  display: flex;
+  position: relative;
+  width: 18px;
+  height: 2px;
+
+  &::after{
+    position: absolute;
+    top: 5px;
+    content: '';
+    background-color: var(--orange);
+    height: 2px;
+    width: 18px;
+  }
+
+  &::before{
+    position: absolute;
+    bottom: 5px;
+    content: '';
+    background-color: var(--orange);
+    height: 2px;
+    width: 18px;
+  }
+}

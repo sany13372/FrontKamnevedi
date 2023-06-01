@@ -1,18 +1,10 @@
-export interface IUser {
+export interface IItem{
     id:string
-    firstName:string
-    lastName:string
-    status:string
-    comments:string[]
-    score:number | null
-    rank:number | null
-    videoUrl?:string
-    poster?:string
-}
-
-export interface ITemplate{
-    id:string
-    name:string
-    type:'Email' | 'SMS' | 'WhatsApp'
-    text:string
+    price:number
+    img:any
+    title:string
+    age:string
+    size:string
+    weight:number
+    location:string
 }

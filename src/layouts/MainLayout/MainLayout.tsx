@@ -1,19 +1,41 @@
 import {FC, PropsWithChildren} from 'react';
-import Header from "@/components/Header/Header";
-import UserProvider from "@/providers/UsersProvider";
-import {Inter} from "next/font/google";
-import TemplateProvider from "@/providers/TemplateProvider";
+import localFont from "next/font/local";
 
-const inter = Inter({subsets: ['latin'], weight: ['400', '700']})
+export const gilroy = localFont({
+    src: [
+        {
+            path: '../../../public/fonts/Gilroy-Regular.otf',
+            weight: '400',
+        },
+        {
+            path: '../../../public/fonts/Gilroy-Medium.otf',
+            weight: '500',
+        },
+        {
+            path: '../../../public/fonts/Gilroy-Semibold.otf',
+            weight: '600',
+        },
+        {
+            path: '../../../public/fonts/Gilroy-Bold.otf',
+            weight: '700',
+        },
+    ],
+});
+
+export const oswald = localFont({
+    src: [
+        {
+            path: '../../../public/fonts/Oswald-Medium.ttf',
+            weight: '500'
+        }
+    ]
+})
+
 const MainLayout: FC<PropsWithChildren> = ({children}) => {
     return (
-        <div className={`min-h-screen flex-col ${inter.className}`}>
-            <UserProvider>
-                <TemplateProvider>
-                    <Header/>
-                    {children}
-                </TemplateProvider>
-            </UserProvider>
+        <div className={gilroy.className}>
+            {/*<Header/>*/}
+            {children}
         </div>
     );
 }

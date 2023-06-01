@@ -1,0 +1,16 @@
+.block{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 0.405rem;
+  margin-bottom: 0.75rem;
+}
+
+.logoP{
+  margin-bottom: 0.2rem;
+}
