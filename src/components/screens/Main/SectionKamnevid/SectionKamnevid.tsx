@@ -11,10 +11,10 @@ const SectionKamnevid: FC<{ scale: number, offsetY: number }> = ({scale, offsetY
     //72
     //170
     if (offsetY === 170) {
-        console.log('sc', scale)
+       // console.log('sc', scale)
     }
 
-    console.log(offsetY)
+   // console.log(offsetY)
     useEffect(() => {
             //postyp
             if (offsetY > 110) {

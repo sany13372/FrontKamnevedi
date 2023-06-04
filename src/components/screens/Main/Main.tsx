@@ -69,6 +69,8 @@ const Main: FC = () => {
     const [scale, setScale] = useState<number>(0)
     const handleScroll = () => setOffsetY(window.pageYOffset)
     useEffect(() => {
+        const scrollTarget = document.getElementById('postyp')
+
         window.addEventListener("scroll", () => {
             const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
             handleScroll()
@@ -78,22 +80,21 @@ const Main: FC = () => {
             const power = 10;
             const scale = 1 + (scrollTop / maxScroll) * power;
             setScale(scale)
+
         })
-        //window.addEventListener('')
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
     useEffect(() => {
-        const scrollTarget = document.getElementById('postyp')
         window.onwheel = e => {
             if (e.deltaY >= 0) {
                 // Scrolling Down with mouse
-                console.log('Scroll Down');
-                if (scrollTarget && offsetY > 110 && offsetY < 500) {
-                    console.log(scrollTarget)
+                //  console.log('Scroll Down');
+                if (window.pageYOffset > 140 && window.pageYOffset < 700) {
+                    //  console.log(scrollTarget)
                     console.log('work')
                     window.scrollBy({
-                        top: 1100,
+                       // top: 1100,
                         // behavior: 'smooth'
                     });
                 }
@@ -102,23 +103,16 @@ const Main: FC = () => {
                 if (offsetY < 1099) {
                     //scroll.scrollToTop();
                     // scroll.scrollTo()
-                    // window.scrollBy({
-                    //     top: 130,
-                    //     // behavior: 'smooth'
-                    // });
+                    window.scrollBy({
+                        //top: 110,
+                        // behavior: 'smooth'
+                    });
                 }
-                console.log('Scroll Up');
+                //console.log('Scroll Up');
             }
         }
-
-
-
-
     }, [offsetY])
 
-
-    console.log('ff', scroll)
-    console.log('scroll', offsetY)
     return (
         <>
             <SectionKamnevid scale={scale} offsetY={offsetY}/>

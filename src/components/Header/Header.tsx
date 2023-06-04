@@ -7,13 +7,14 @@ import CenterTitle from "@/components/Header/CenterTitle/CenterTitle";
 const Header: FC = () => {
     const [offset,setOffset] = useState<number>(0)
     useEffect(()=>{
-
+        document.addEventListener('scroll',() => {
+            setOffset(window.pageYOffset)
+        })
     },[])
     return (
         <header className={styles.header}>
             <LeftBlock/>
-            {offset > 80 && <CenterTitle/>}
-            <CenterTitle/>
+            {offset > 72 && <CenterTitle/>}
             <RightBlock/>
         </header>
     );

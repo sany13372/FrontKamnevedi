@@ -4,27 +4,50 @@
 
   > h1 {
     font-weight: 400;
-    font-size: 3.5rem;
+    font-size: calc(#{56 + px} + #{16} * ((100vw - 320px) / #{1800}));
     line-height: 129%;
     text-align: center;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--mediumWhite);
+    @media (max-width: 1200px) {
+      font-size: 1.875rem;
+    }
   }
 
-  > a {
+  > div{
     display: flex;
     justify-content: center;
-    text-align: center;
-    color: var(--mediumWhite);
-    margin-top: 2rem;
-    font-weight: 700;
-    font-size: 0.875rem;
-    line-height: 129%;
-    /* identical to box height, or 129% */
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    > a {
+      cursor: pointer;
+      position: relative;
+      text-align: center;
+      color: var(--mediumWhite);
+      margin-top: 2rem;
+      font-weight: 700;
+      font-size: 0.875rem;
+      line-height: 129%;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      &:after{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: '';
+        width: 0%;
+        background-color: var(--orange);
+        height: 1px;
+      }
+
+      &:hover{
+        &:after{
+          transition: all 0.3s ease-in-out;
+          width: 100%;
+        }
+      }
+    }
   }
+
 
   &.active {
     transition: all 1s ease-in-out;
