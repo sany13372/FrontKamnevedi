@@ -7,23 +7,12 @@ import MouseImg from '@/assets/images/Mouse.svg'
 import cn from 'clsx'
 
 const SectionKamnevid: FC<{ scale: number, offsetY: number }> = ({scale, offsetY}) => {
-    //console.log(offsetY)
-    //72
-    //170
-    if (offsetY === 170) {
-       // console.log('sc', scale)
-    }
 
-   // console.log(offsetY)
-    useEffect(() => {
-            //postyp
-            if (offsetY > 110) {
-
-            }
-        }, [offsetY])
 
         return (
-            <section className={cn(styles.section, {})}
+            <section className={cn(styles.section, {
+                'gradient':offsetY > 72
+            })}
                      style={{transform: `scale(${(scale === 0 ? 1 : offsetY > 170 ? 1.67 : scale)})`}}>
                 <LogoImg className={cn('pointer', {
                     [styles.logo]: offsetY > 72

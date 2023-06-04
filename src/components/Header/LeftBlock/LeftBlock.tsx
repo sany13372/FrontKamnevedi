@@ -2,16 +2,18 @@ import {FC} from 'react';
 import styles from './LeftBlock.module.scss'
 import HeaderAction from "@/components/UI/HeaderAction/HeaderAction";
 
-const LeftBlock: FC = () => {
+const LeftBlock: FC<{ showActions: boolean }> = ({showActions}) => {
     return (
         <div className={styles.block}>
             <nav>
                 <span className={styles.navicon}></span>
-                <h4>меню</h4>
+                {showActions && <h4>меню</h4>}
             </nav>
-            <HeaderAction>
-                RU
-            </HeaderAction>
+            {showActions &&
+                <HeaderAction>
+                    RU
+                </HeaderAction>
+            }
         </div>
     );
 }

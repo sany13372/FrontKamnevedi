@@ -18,6 +18,7 @@ const LeftBlock: FC = () => {
             })
         }
     }, [])
+
     return (
         <div className={styles.block}>
             {!showLittleImg ? <Image src={Img} alt={'Картинка'}/> : <Image src={Imgmini} alt={'Картинка'}/>}

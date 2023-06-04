@@ -1,7 +1,7 @@
 .block {
   position: relative;
   margin-bottom: 15rem;
-
+  padding: 0rem 10rem;
   > h1 {
     font-weight: 400;
     font-size: calc(#{56 + px} + #{16} * ((100vw - 320px) / #{1800}));

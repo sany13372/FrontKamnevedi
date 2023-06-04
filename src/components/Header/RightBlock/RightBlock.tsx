@@ -5,12 +5,14 @@ import FavoriteImg from '@/assets/images/Favorite.svg'
 import CardImg from '@/assets/images/CardImage.svg'
 import styles from './RightBlock.module.scss'
 
-const RightBlock: FC = () => {
+const RightBlock: FC<{ showActions: boolean }> = ({showActions}) => {
     return (
         <div className={styles.block}>
-            <HeaderAction>
-                <TelephoneImg fill={'#EFEFEF'}/>
-            </HeaderAction>
+            {showActions &&
+                <HeaderAction>
+                    <TelephoneImg fill={'#EFEFEF'}/>
+                </HeaderAction>
+            }
             <HeaderAction count={2}>
                 <FavoriteImg fill={'#EFEFEF'}/>
             </HeaderAction>
