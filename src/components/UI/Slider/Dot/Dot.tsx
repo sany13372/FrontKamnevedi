@@ -1,12 +1,6 @@
-import {Children, FC} from 'react';
-import {data} from "@/components/screens/Main/Main";
+import {FC} from 'react';
 import cn from 'clsx'
 import styles from './Dot.module.scss'
-
-interface IDot{
-    // onClick:() => void
-    // rest:any
-}
 
 const Dot: FC = (props:any) => {
     const {
@@ -22,7 +16,6 @@ const Dot: FC = (props:any) => {
             })}
             onClick={() => props.onClick()}
         >
-            {Children.toArray(data[index].id)[index]}
         </button>
     );
 }

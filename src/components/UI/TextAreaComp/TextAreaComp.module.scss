@@ -1,0 +1,14 @@
+.textArea{
+  padding-left: 1rem;
+  background: #202020;
+  height: 10.75rem;
+  resize: none;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: 0.02em;
+  color: rgba(239, 239, 239, 0.8);
+  &::placeholder{
+    color: rgba(239, 239, 239, 0.8);
+  }
+}

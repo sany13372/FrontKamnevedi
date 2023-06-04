@@ -1,5 +1,6 @@
 import {FC, PropsWithChildren} from 'react';
 import localFont from "next/font/local";
+import Header from "@/components/Header/Header";
 
 export const gilroy = localFont({
     src: [
@@ -34,7 +35,7 @@ export const oswald = localFont({
 const MainLayout: FC<PropsWithChildren> = ({children}) => {
     return (
         <div className={gilroy.className}>
-            {/*<Header/>*/}
+            <Header/>
             {children}
         </div>
     );

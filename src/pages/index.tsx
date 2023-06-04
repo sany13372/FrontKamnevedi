@@ -1,11 +1,14 @@
 import Main from "@/components/screens/Main/Main";
 import Header from "@/components/Header/Header";
 import SectionKamnevid from "@/components/screens/Main/SectionKamnevid/SectionKamnevid";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
+import {Parallax, ParallaxLayer} from "@react-spring/parallax";
 
 export default function MainPage() {
     const [offsetY,setOffsetY] = useState<number>(0)
     const [scale,setScale] = useState<number>(0)
+    const ref = useRef<any>();
+
     const handleScroll = () => setOffsetY(window.pageYOffset)
     useEffect(()=>{
         window.addEventListener("scroll",() => {

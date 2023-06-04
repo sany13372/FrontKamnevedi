@@ -1,8 +1,6 @@
-import {FC, useEffect, useState} from 'react';
+import {FC, useEffect, useRef, useState} from 'react';
 import SectionKamnevid from "./SectionKamnevid/SectionKamnevid";
 import SectionPostyplenia from "./SectionPostyplenia/SectionPostyplenia";
-import Header from "@/components/Header/Header";
-import styles from './Main.module.scss'
 import {IItem} from "@/types/all.interface";
 import SlideImg1 from '@/assets/images/Slide1.png'
 import "react-multi-carousel/lib/styles.css";
@@ -10,9 +8,9 @@ import SlideImg2 from '@/assets/images/Slide2.png'
 import SlideImg3 from '@/assets/images/Slide3.png'
 import SlideImg4 from '@/assets/images/Slide4.png'
 import SlideImg5 from '@/assets/images/Slide5.png'
-import Carousel from "react-multi-carousel";
-import Slide from "@/components/UI/Slider/BlockItems/Slide/Slide";
-import Dot from "@/components/UI/Slider/Dot/Dot";
+import SectionForm from "@/components/screens/Main/SectionForm/SectionForm";
+import BlockTitle from "@/components/screens/Main/BlockTitle/BlockTitle";
+import {Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller} from 'react-scroll'
 
 export const data: IItem[] = [
     {
@@ -69,7 +67,6 @@ export const data: IItem[] = [
 const Main: FC = () => {
     const [offsetY, setOffsetY] = useState<number>(0)
     const [scale, setScale] = useState<number>(0)
-    const [show,setShow] = useState<boolean>(false)
     const handleScroll = () => setOffsetY(window.pageYOffset)
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -77,41 +74,57 @@ const Main: FC = () => {
             handleScroll()
             // Получаем максимальное значение скролла
             const maxScroll = scrollHeight - clientHeight;
-
             // Вычисляем масштаб
             const power = 10;
             const scale = 1 + (scrollTop / maxScroll) * power;
             setScale(scale)
         })
-
+        //window.addEventListener('')
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
-    console.log(offsetY)
+
     useEffect(() => {
-        if (offsetY > 100) {
-            setShow(true)
+        const scrollTarget = document.getElementById('postyp')
+        window.onwheel = e => {
+            if (e.deltaY >= 0) {
+                // Scrolling Down with mouse
+                console.log('Scroll Down');
+                if (scrollTarget && offsetY > 110 && offsetY < 500) {
+                    console.log(scrollTarget)
+                    console.log('work')
+                    window.scrollBy({
+                        top: 1100,
+                        // behavior: 'smooth'
+                    });
+                }
+            } else {
+                // Scrolling Up with mouse
+                if (offsetY < 1099) {
+                    //scroll.scrollToTop();
+                    // scroll.scrollTo()
+                    // window.scrollBy({
+                    //     top: 130,
+                    //     // behavior: 'smooth'
+                    // });
+                }
+                console.log('Scroll Up');
+            }
         }
-        if (offsetY < 10){
-            setOffsetY(11)
-            setShow(false)
-        }
+
+
+
 
     }, [offsetY])
 
 
-
+    console.log('ff', scroll)
+    console.log('scroll', offsetY)
     return (
         <>
-            <div className={styles.layout}>
-                <Header/>
-                {!show && <SectionKamnevid scale={scale} offsetY={offsetY}/>}
-                {/*{offsetY < 100 && <SectionKamnevid offsetY={scale}/>}*/}
-            </div>
-            <main>
-                <SectionPostyplenia/>
-                {/*<Slider dataSlider={data}/>*/}
-
-            </main>
+            <SectionKamnevid scale={scale} offsetY={offsetY}/>
+            <BlockTitle offsetY={offsetY}/>
+            <SectionPostyplenia/>
+            <SectionForm/>
         </>
     );
 }

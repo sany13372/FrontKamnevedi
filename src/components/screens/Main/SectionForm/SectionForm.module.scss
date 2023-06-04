@@ -1,0 +1,47 @@
+.section {
+  scroll-behavior: smooth;
+  position: relative;
+  z-index: 2;
+  padding: 15.065rem 10.75rem 7.56rem 10.75rem;
+  @media (max-width: 1000px) {
+    padding: 15.065rem 2rem 7.56rem 2rem;
+  }
+  > h3 {
+    max-width: 69.5rem;
+    color: var(--orange);
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 125%;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+    @media (max-width: 800px) {
+      font-size: 1.25rem;
+    }
+    > p {
+      color: var(--mediumWhite);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 125%;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      @media (max-width: 800px) {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  > div{
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  > img{
+    z-index: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}

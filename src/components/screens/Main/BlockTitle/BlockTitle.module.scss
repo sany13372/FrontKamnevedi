@@ -1,0 +1,33 @@
+.block {
+  position: relative;
+  margin-bottom: 15rem;
+
+  > h1 {
+    font-weight: 400;
+    font-size: 3.5rem;
+    line-height: 129%;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--mediumWhite);
+  }
+
+  > a {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: var(--mediumWhite);
+    margin-top: 2rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 129%;
+    /* identical to box height, or 129% */
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  &.active {
+    transition: all 1s ease-in-out;
+    margin-top: -200px;
+  }
+}
