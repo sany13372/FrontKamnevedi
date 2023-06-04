@@ -2,6 +2,11 @@
   position: relative;
   margin-bottom: 15rem;
   padding: 0rem 10rem;
+
+  @media (max-width: 500px) {
+    padding: 0 1rem;
+  }
+
   > h1 {
     font-weight: 400;
     font-size: calc(#{56 + px} + #{16} * ((100vw - 320px) / #{1800}));
@@ -48,9 +53,15 @@
     }
   }
 
-
   &.active {
     transition: all 1s ease-in-out;
     margin-top: -200px;
+    @media (max-width: 850px) {
+      margin-top: -440px;
+    }
+
+    @media (max-width: 400px) {
+      margin-top: -500px;
+    }
   }
 }

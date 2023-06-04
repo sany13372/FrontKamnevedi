@@ -1,13 +1,17 @@
 .header{
   width: 100%;
   position: fixed;
-  z-index: 3;
+  z-index: 1100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 3rem 3.75rem 3rem 3.9375rem;
-  
+
   @media (max-width: 540px) {
     padding: 3rem 1rem;
+  }
+
+  &.active{
+    background-color: black;
   }
 }
