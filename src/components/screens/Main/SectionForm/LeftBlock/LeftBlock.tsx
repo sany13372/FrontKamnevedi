@@ -8,7 +8,7 @@ const LeftBlock: FC = () => {
 
     return (
         <div className={styles.block}>
-            <Image src={Img} className={styles.imgBig} alt={'Картинка'}/>
+            {/*<Image src={Img} className={styles.imgBig} alt={'Картинка'}/>*/}
             <Image className={styles.imgMini} src={Imgmini} alt={'Картинка'}/>
             <div>
                 <div>
