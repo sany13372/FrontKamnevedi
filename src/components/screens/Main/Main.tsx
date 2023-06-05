@@ -66,7 +66,7 @@ export const data: IItem[] = [
 const Main: FC = () => {
     const [offsetY, setOffsetY] = useState<number>(0)
     const [scale, setScale] = useState<number>(0)
-    const [showBlocks, setShowBlocks] = useState<boolean>(true)
+    const [showBlocks, setShowBlocks] = useState<boolean>(false)
     const handleScroll = () => setOffsetY(window.pageYOffset)
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -91,6 +91,7 @@ const Main: FC = () => {
 
     return (
         <>
+            {!showBlocks && <span className="loader"></span>}
             {showBlocks &&
                 <>
                     <SectionKamnevid scale={scale} offsetY={offsetY}/>
