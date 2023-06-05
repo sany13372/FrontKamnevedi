@@ -57,3 +57,17 @@
     }
   }
 }
+
+.imgBig{
+  display: block;
+  @media (max-width: 550px) {
+    display: none;
+  }
+}
+
+.imgMini{
+  display: none;
+  @media (max-width: 550px) {
+    display: block;
+  }
+}

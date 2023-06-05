@@ -12,6 +12,11 @@ const Header: FC = () => {
     const router = useRouter()
 
     useEffect(() => {
+        if (window.screen.width < 750) {
+            setShowActions(false)
+        } else {
+            setShowActions(true)
+        }
         document.addEventListener('scroll', () => {
             setOffset(window.pageYOffset)
         })
