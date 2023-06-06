@@ -12,7 +12,9 @@ const Field = forwardRef<HTMLInputElement, IField>(
                     {/*<ReactInputMask mask="99/99/_3_4_4" {...rest}>*/}
                     {/*    /!*{(inputProps) => <input ref={ref} type={type} type="tel"/> }*!/*/}
                     {/*</ReactInputMask>*/}
-                    <input ref={ref} type={type} placeholder={placeholder} {...rest} />
+                    <input ref={ref} className={cn({
+                        [styles.active]:error
+                    })} type={type} placeholder={placeholder} {...rest} />
                 </label>
                 {error && <div className={styles.error}>{error.message}</div>}
             </div>
